@@ -65,6 +65,7 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 # REAL_WORLD_CURRENCY_CODE = 'USD'
 REAL_WORLD_CURRENCY_CODE = 'AED '
+REAL_WORLD_CURRENCY_CODE = 'RMB '
 USE_POINTS = True
 # POINTS_CUSTOM_NAME = 'tokens'
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 0
@@ -102,8 +103,18 @@ DEMO_PAGE_INTRO_TEXT = """
 ROOMS = [
     {
         'name': 'ssel_b_side',
-        'display_name': 'SSEL Desktops B01 - B24 - The B-Sides',
+        'display_name': 'SSEL B01 - B24',
         'participant_label_file': '_rooms/ssel_b_side.txt',
+    },
+    {
+        'name': '1',
+        'display_name': 'Room 1',
+        'participant_label_file': '_rooms/room1.txt',
+    },
+    {
+        'name': '2',
+        'display_name': 'Room 2',
+        'participant_label_file': '_rooms/room2.txt',
     },
 ]
 
@@ -146,6 +157,13 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'guess_number',
+        'display_name': "guess number",
+        'num_demo_participants': 1,
+        'debug': DEBUG,
+        'app_sequence': ['guess_number'],
+    },
+    {
         'name': 'PD_communication',
         'display_name': "PD Private Monitoring with Communication",
         'num_demo_participants': 4,
@@ -153,7 +171,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz','my_PD_practice90','my_PD','coordination','my_PD_survey','ravens','investment_task','payment_info'],
+        'app_sequence': ['my_PD_quiz','my_PD_practice90','my_PD','guess_number','my_PD_survey','ravens','investment_task','payment_info'],
     },
     {
         'name': 'PD_public_d60',
@@ -163,7 +181,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD', 'coordination', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -174,7 +192,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.9,
         'num_rounds': 99,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -185,7 +203,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.9,
         'num_rounds': 99,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -196,7 +214,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.9,
         'num_rounds': 99,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'guess_number', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -207,7 +225,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.9,
         'num_rounds': 99,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'guess_number', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -218,7 +236,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD', 'coordination', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -266,6 +284,7 @@ SESSION_CONFIGS = [
         'name': 'Coordination_game',
         'display_name': "Coordination: payoff dominant or risk dominant",
         'num_demo_participants': 4,
+        'debug': DEBUG,
         'app_sequence': ['coordination'],
     },
     {

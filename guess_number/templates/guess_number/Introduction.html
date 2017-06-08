@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Introduction
+{% endblock %}
+
+{% block content %}
+
+    {% include Constants.instructions_template %}
+
+    <div style="text-align:right">
+        <br/>
+    {% next_button %}
+    </div>
+
+{% endblock %}

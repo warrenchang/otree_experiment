@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Your Guess
+{% endblock %}
+
+
+{% block content %}
+
+{% include Constants.instructions_template %}
+<p style="font-size:16px">Round {{ player.round_number }} </p>
+
+    {% if player.round_number > 1 %}
+        <p>
+            The targets of the guess in previous rounds are:
+            {{ group.correct_number_history }}
+        </p>
+    {% endif %}
+
+    {% formfield player.guess with label="Please pick an integer from 0 to 100:" %}
+    {% next_button %}
+
+
+{% endblock %}
