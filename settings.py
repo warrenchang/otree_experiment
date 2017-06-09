@@ -157,6 +157,13 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'bret',
+        'display_name': "Bomb Risk Elicitation Task",
+        'num_demo_participants': 1,
+        'debug': DEBUG,
+        'app_sequence': ['bret'],
+    },
+    {
         'name': 'guess_number',
         'display_name': "guess number",
         'num_demo_participants': 1,
