@@ -28,7 +28,7 @@ class Constants(BaseConstants):
     # value of single collected box
     # if the bomb is not collected, player's payoff per round is determined by <box_value> times <boxes_collected>
     # note that the currency of any earnings is determined by the oTree settings in settings.py
-    box_value = 0.10
+    box_value = 1
 
     # number of rows and columns
     # i.e. the total number of boxes is determined by <num_rows> times <num_cols>
@@ -96,4 +96,4 @@ class Constants(BaseConstants):
     # if <undoable = True> boxes can be selected and de-selected indefinitely often
     # if <undoable = False> boxes can be selected only once (i.e. decisions can not be undone)
     # note that this only affects game play if <dynamic = False> and <devils_game = True>
-    undoable = True
+    undoable = False

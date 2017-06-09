@@ -12,7 +12,7 @@ This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
 
 
 class Constants(BaseConstants):
-    name_in_url = 'my_PD'
+    name_in_url = 'prisoners_dilemma'
     players_per_group = 2
 
     number_sequence = [2, 4, 3, 10, 4, 9, 3, 10, 7, 6, 4, 4, 3, 5, 1, 9, 6,

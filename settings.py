@@ -178,7 +178,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz','my_PD_practice90','my_PD','guess_number','my_PD_survey','ravens','investment_task','payment_info'],
+        'app_sequence': ['my_PD_quiz','my_PD_practice90','prisoners_dilemma','guess_number','my_PD_survey','ravens','investment_task','payment_info'],
     },
     {
         'name': 'PD_public_d60',
@@ -188,7 +188,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'prisoners_dilemma', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -243,7 +243,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'prisoners_dilemma', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
