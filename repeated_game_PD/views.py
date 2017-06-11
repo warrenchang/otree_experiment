@@ -47,7 +47,7 @@ class Decision(BasePage):
 
 
 class DecisionWaitPage(BaseWaitPage):
-    template_name = 'repeated_game/DecisionWaitPage.html'
+    template_name = 'repeated_game_PD/DecisionWaitPage.html'
 
     def after_all_players_arrive(self):
         # it only gets executed once
@@ -66,7 +66,7 @@ class Results(BasePage):
 
 # class ResultsWaitPage(BaseWaitPage):
 class ResultsWaitPage(WaitPage):
-    template_name = 'repeated_game/ResultsWaitPage.html'
+    template_name = 'repeated_game_PD/ResultsWaitPage.html'
     wait_for_all_groups = True
 
     def is_displayed(self):
@@ -82,7 +82,7 @@ class InteractionResults(BasePage):
 
 
 class InteractionWaitPage(BaseWaitPage):
-    template_name = 'repeated_game/InteractionWaitPage.html'
+    template_name = 'repeated_game_PD/InteractionWaitPage.html'
     wait_for_all_groups = True
 
     def is_displayed(self):

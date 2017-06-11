@@ -12,7 +12,7 @@ This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
 
 
 class Constants(BaseConstants):
-    name_in_url = 'repeated_game'
+    name_in_url = 'repeated_game_PD'
     players_per_group = 2
 
     interactions = [
@@ -25,11 +25,10 @@ class Constants(BaseConstants):
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     ]
-
     interaction_length = [10, 10, 10]
+
     treatments = ['random', 'reputation', 'fixed']
 
-    num_rounds = 30  # change num_rounds for testing purpose, but need to make sure that number_sequence
 
     interactions = [
         1, 1, 1,
@@ -41,17 +40,15 @@ class Constants(BaseConstants):
         1, 2, 3,
         1, 2, 3,
     ]
-
     interaction_length = [3, 3, 3]
-    treatments = ['random', 'reputation', 'fixed']
 
     num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
 
 
     # payoff for the prisoner's dilemma
-    R = 20
-    T = 30
-    S = -10
+    R = 2
+    S = -2
+    T = 4
     P = 0
 
     payoff_matrix = {
@@ -67,10 +64,10 @@ class Constants(BaseConstants):
             }
     }
 
-    instructions_template = 'repeated_game/Instructions.html'
-    history_template = 'repeated_game/History.html'
-    historyall_template = 'repeated_game/HistoryAllRounds.html'
-    otherhistory_template = 'repeated_game/OtherHistory.html'
+    instructions_template = 'repeated_game_PD/Instructions.html'
+    history_template = 'repeated_game_PD/History.html'
+    historyall_template = 'repeated_game_PD/HistoryAllRounds.html'
+    otherhistory_template = 'repeated_game_PD/OtherHistory.html'
 
 
 class Subsession(BaseSubsession):

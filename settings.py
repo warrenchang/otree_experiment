@@ -18,6 +18,9 @@ else:
     DEBUG = True
     APPS_DEBUG = True
 
+# DEBUG = False
+# APPS_DEBUG = False
+
 # don't share this with anybody.
 SECRET_KEY = 'xbsw&0b==_fg)5#4n)ckwgr1-na%c#z=pmt4+13yr!h-x&s=1p'
 
@@ -157,27 +160,34 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'bret',
-        'display_name': "Bomb Risk Elicitation Task",
-        'num_demo_participants': 1,
+        'name': 'beauty_contest',
+        'display_name': "Beauty contest",
+        'num_demo_participants': 2,
         'debug': DEBUG,
-        'app_sequence': ['bret'],
+        'app_sequence': ['pure_coordination'],
+    },
+    {
+        'name': 'meeting_time',
+        'display_name': "Meeting time and place",
+        'num_demo_participants': 2,
+        'debug': DEBUG,
+        'app_sequence': ['meeting_place'],
     },
     {
         'name': 'guess_number',
-        'display_name': "guess number",
+        'display_name': "Guess number",
         'num_demo_participants': 1,
         'debug': DEBUG,
         'app_sequence': ['guess_number'],
     },
     {
         'name': "simple_PD",
-        'display_name': "Prisoner's Dilemma",
+        'display_name': "Prisoner's Dilemma 3 treatments",
         'num_demo_participants': 4,
         'treatment': 'random',
         'debug': DEBUG,
-        'num_rounds': 10,
-        'app_sequence': ['repeated_game'],
+        # 'num_rounds': 10,
+        'app_sequence': ['repeated_game_PD'],
     },
     {
         'name': "coopetition",
@@ -189,6 +199,42 @@ SESSION_CONFIGS = [
         'app_sequence': ['coopetition'],
     },
     {
+        'name': "simple_coordination",
+        'display_name': "Coordination game 4 matches",
+        'num_demo_participants': 4,
+        'treatment': 'random',
+        'debug': DEBUG,
+        # 'num_rounds': 10,
+        'app_sequence': ['repeated_game_randpay'],
+    },
+    {
+        'name': "big5_survey",
+        'display_name': "Big 5 survey",
+        'num_demo_participants': 1,
+        'debug': DEBUG,
+        # 'num_rounds': 10,
+        'app_sequence': ['big5_survey'],
+    },
+    {
+        'name': 'Raven',
+        'display_name': "Raven's progressive matrix",
+        'num_demo_participants': 1,
+        'app_sequence': ['ravens'],
+    },
+    {
+        'name': 'my_survey',
+        'display_name': "Survey questions",
+        'num_demo_participants': 1,
+        'app_sequence': ['my_survey'],
+    },
+    {
+        'name': 'bret',
+        'display_name': "Bomb Risk Elicitation Task",
+        'num_demo_participants': 1,
+        'debug': DEBUG,
+        'app_sequence': ['bret'],
+    },
+    {
         'name': 'PD_communication',
         'display_name': "PD Private Monitoring with Communication",
         'num_demo_participants': 4,
@@ -196,7 +242,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz','my_PD_practice90','repeated_game','guess_number','my_PD_survey','ravens','investment_task','payment_info'],
+        'app_sequence': ['my_PD_quiz','my_PD_practice90','my_PD90','coordination','my_PD_survey','ravens','investment_task','payment_info'],
     },
     {
         'name': 'PD_public_d60',
@@ -206,7 +252,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'repeated_game', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -217,7 +263,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.9,
         'num_rounds': 99,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -228,7 +274,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.9,
         'num_rounds': 99,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -239,7 +285,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.9,
         'num_rounds': 99,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'guess_number', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -261,7 +307,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'repeated_game', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'my_PD90', 'coordination', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -293,12 +339,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'app_sequence': ['my_PD_quiz', 'my_PD_survey'],
     },
-    {
-        'name': 'Raven',
-        'display_name': "Raven's progressive matrix",
-        'num_demo_participants': 1,
-        'app_sequence': ['ravens'],
-    },
+
     {
         'name': 'Investment',
         'display_name': "Investment Task for risk preferences",
@@ -312,13 +353,13 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'app_sequence': ['coordination'],
     },
-    {
-        'name': 'my_survey',
-        'display_name': "Survey questions for Prisoner's Dilemma",
-        'num_demo_participants': 1,
-        'treatment': 'PBL',
-        'app_sequence': ['my_PD_survey'],
-    },
+    # {
+    #     'name': 'my_survey',
+    #     'display_name': "Survey questions for Prisoner's Dilemma",
+    #     'num_demo_participants': 1,
+    #     'treatment': 'PBL',
+    #     'app_sequence': ['my_PD_survey'],
+    # },
     {
         'name': 'my_survey_COM',
         'display_name': "PD with communication Survey questions",

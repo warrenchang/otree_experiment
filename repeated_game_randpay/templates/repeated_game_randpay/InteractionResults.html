@@ -1,4 +1,4 @@
-{% extends 'otree/WaitPage.html' %}
+{% extends "global/Page.html" %}
 {% load staticfiles otree_tags %}
 
 {% block title %}
@@ -8,7 +8,7 @@
 
 {% block content %}
 
-    <div style="text-align:center;font-size:16px">
+      <div style="text-align:center;font-size:16px">
         <p>
             <strong>
                 This is the end of this part of the experiment.
@@ -33,5 +33,8 @@
 
 {% include Constants.historyall_template %}
 
+    <div style="text-align:right">
+        {% next_button %}
+    </div>
 
 {% endblock %}

@@ -10,18 +10,13 @@ doc = """
 This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
 """
 
-def get_share(p1,p2):
-    if p1==0 and p2 ==0:
-        return 1/2
-    else:
-        return p1/(p1+p2)
 
 class Constants(BaseConstants):
-    name_in_url = 'coopetition'
-    instructions_template = 'coopetition/Instructions.html'
-    history_template = 'coopetition/History.html'
-    historyall_template = 'coopetition/HistoryAllRounds.html'
-    otherhistory_template = 'coopetition/OtherHistory.html'
+    name_in_url = 'repeated_game_randpay'
+    instructions_template = 'repeated_game_randpay/Instructions.html'
+    history_template = 'repeated_game_randpay/History.html'
+    historyall_template = 'repeated_game_randpay/HistoryAllRounds.html'
+    otherhistory_template = 'repeated_game_randpay/OtherHistory.html'
 
     # number of rounds in each interaction randomly selected for payments
     # set to non-positive number if all rounds are chosen for payments
@@ -43,8 +38,7 @@ class Constants(BaseConstants):
     ]
 
     interaction_length = [10, 10, 10, 10]
-    treatments = ['random', 'random', 'fixed', 'fixed']
-    compete = [0, 1, 0, 1]
+    treatments = ['random', 'random', 'random', 'random']
 
 
     interactions = [
@@ -64,6 +58,57 @@ class Constants(BaseConstants):
 
     num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
 
+    # payoff matrices for different rounds
+    payoff_matrix = {
+        '1': {
+            'X':
+                {
+                    'X': 10,
+                    'Y': 10
+                },
+            'Y':
+                {
+                    'X': 0,
+                    'Y': 15
+                }
+        },
+        '2': {
+            'X':
+                {
+                    'X': 0,
+                    'Y': 18
+                },
+            'Y':
+                {
+                    'X': 12,
+                    'Y': 0
+                }
+        },
+        '3':{
+        'X':
+            {
+                'X': 15,
+                'Y': 0
+            },
+        'Y':
+            {
+                'X': 8,
+                'Y': 8
+            }
+    },
+        '4': {
+            'X':
+                {
+                    'X': 15,
+                    'Y': 8
+                },
+            'Y':
+                {
+                    'X': 30,
+                    'Y': 0
+                }
+        }
+    }
 
 
 
@@ -74,7 +119,6 @@ class Subsession(BaseSubsession):
         round_in_interaction = Constants.round_in_interactions[self.round_number-1]
         interaction_number = Constants.interactions[self.round_number-1]
         treatment = Constants.treatments[interaction_number-1]
-        compete = Constants.compete[interaction_number-1]
 
         # print((interaction_number,round_in_interaction,treatment))
 
@@ -89,7 +133,6 @@ class Subsession(BaseSubsession):
             p.interaction_number = interaction_number
             p.round_in_interaction = round_in_interaction
             p.treatment = treatment
-            p.compete = compete
             p.paying_round = 1
             # print((p.participant.id_in_session, p.interaction_number, p.round_in_interaction, p.treatment))
             if Constants.num_paying_rounds > 0 and not (round_in_interaction in self.session.vars['paying_rounds']):
@@ -114,28 +157,10 @@ class Group(BaseGroup):
         p2.partner_id = p1.my_id
 
         # first calculate payoff
-        p1.other_a1 = p2.a1
-        p1.other_a2 = p2.a2
-        p1.other_a3 = p2.a3
-        p2.other_a1 = p1.a1
-        p2.other_a2 = p1.a2
-        p2.other_a3 = p1.a3
-
-        p1.pie = p1.a1*p2.a1
-        p2.pie = p1.a1*p2.a1
-        p1.pie_share = round(get_share(p1.a2,p2.a2),2)
-        p2.pie_share = round(get_share(p2.a2,p1.a2),2)
-
-        if p1.compete == 0:
-            p1.P3_earnings = p1.a3
-            p2.P3_earnings = p2.a3
-        else:
-            p1.P3_earnings = round(20 * get_share(p1.a3,p2.a3),2)
-            p2.P3_earnings = round(20 * get_share(p2.a3,p1.a3),2)
-
-        p1.potential_payoff = p1.pie*p1.pie_share + p1.P3_earnings
-        p2.potential_payoff = p2.pie*p2.pie_share + p2.P3_earnings
-
+        p1.other_action = p2.action
+        p2.other_action = p1.action
+        p1.potential_payoff = (Constants.payoff_matrix[str(p1.interaction_number)][p1.action][p1.other_action])
+        p2.potential_payoff = (Constants.payoff_matrix[str(p2.interaction_number)][p2.action][p2.other_action])
         p1.other_payoff = p2.potential_payoff
         p2.other_payoff = p1.potential_payoff
 
@@ -143,11 +168,12 @@ class Group(BaseGroup):
             p1.payoff = p1.potential_payoff
             p2.payoff = p2.potential_payoff
 
+        # print((self.round_number,p1.payoff,p2.payoff))
+
         p1.cum_payoff = sum([p.payoff for p in p1.in_all_rounds()
                                       if p.interaction_number == p1.interaction_number])
         p2.cum_payoff = sum([p.payoff for p in p2.in_all_rounds()
                              if p.interaction_number == p1.interaction_number])
-        # print((self.round_number,p1.payoff,p2.payoff))
 
         # update payoff for Part I in terms of real currency
         # p1.participant.vars['real_payoff_PartI'] = p1.cum_payoff * self.session.config['real_world_currency_per_point']
@@ -158,25 +184,21 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     my_id = models.PositiveIntegerField()
-    treatment = models.CharField()
-    compete = models.PositiveIntegerField()
     interaction_number = models.PositiveIntegerField()
     round_in_interaction = models.PositiveIntegerField()
     paying_round = models.PositiveIntegerField()
+    treatment = models.CharField()
 
-    a1 = models.FloatField(min=0, max=10)
-    a2 = models.FloatField(min=0, max=10)
-    a3 = models.FloatField(min=0, max=10)
-    pie = models.FloatField()
-    pie_share = models.FloatField(min=0, max=1)
-    P3_earnings = models.FloatField()
+    action = models.CharField(
+        choices=['X', 'Y'],
+        doc="""This player's action""",
+        widget=widgets.RadioSelect()
+    )
     potential_payoff = models.CurrencyField()
     cum_payoff = models.CurrencyField()
 
     partner_id = models.PositiveIntegerField()
-    other_a1 = models.FloatField(min=0, max=10)
-    other_a2 = models.FloatField(min=0, max=10)
-    other_a3 = models.FloatField(min=0, max=10)
+    other_action = models.CharField(choices=['X','Y'])
     other_payoff = models.CurrencyField()
 
     def get_partner(self):
