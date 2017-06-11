@@ -9,6 +9,7 @@ class BasePage(Page):
     def vars_for_template(self):
         v =  {
             'treatment': self.session.config['treatment'],
+            'other_player': self.player.get_partner(),
         }
         v.update(self.extra_vars_for_template())
         return v
@@ -21,16 +22,17 @@ class BaseWaitPage(WaitPage):
     def vars_for_template(self):
         return {
             'treatment': self.session.config['treatment'],
+            'other_player': self.player.get_partner(),
         }
 
 
 class Introduction(BasePage):
-    timeout_seconds = 30
+    # timeout_seconds = 30
 
     def is_displayed(self):
-        if self.round_number == 1:
-            print('This is the start of PD')
-        return self.round_number == 1 and (not self.session.config['debug'])
+        if self.player.round_in_interaction == 1:
+            print('This is the start of new match')
+        return self.player.round_in_interaction == 1 and (not self.session.config['debug'])
         # return self.round_number == 1
 
 
@@ -45,7 +47,7 @@ class Decision(BasePage):
 
 
 class DecisionWaitPage(BaseWaitPage):
-    template_name = 'my_PD90/DecisionWaitPage.html'
+    template_name = 'repeated_game/DecisionWaitPage.html'
 
     def after_all_players_arrive(self):
         # it only gets executed once
@@ -54,28 +56,44 @@ class DecisionWaitPage(BaseWaitPage):
 
 
 class Results(BasePage):
-    timeout_seconds = 8
+    timeout_seconds = 10
+    # def get_timeout_seconds(self):
+    #     if self.player.treatment == 'reputation':
+    #         return None
+    #     else:
+    #         return 30
 
 
-class Continuation(BasePage):
-    timeout_seconds = 8
+# class ResultsWaitPage(BaseWaitPage):
+class ResultsWaitPage(WaitPage):
+    template_name = 'repeated_game/ResultsWaitPage.html'
+    wait_for_all_groups = True
 
     def is_displayed(self):
-        return Constants.number_sequence[self.subsession.round_number-1] <= 6
+        return self.player.treatment == 'reputation'
+
 
 
 class InteractionResults(BasePage):
     timeout_seconds = 30
 
     def is_displayed(self):
-        return self.round_number == Constants.num_rounds
+        return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number-1]
 
 
+class InteractionWaitPage(BaseWaitPage):
+    template_name = 'repeated_game/InteractionWaitPage.html'
+    wait_for_all_groups = True
+
+    def is_displayed(self):
+        return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number-1]
 
 page_sequence = [
     Introduction,
     Decision,
     DecisionWaitPage,
     Results,
+    ResultsWaitPage,
     InteractionResults,
+    InteractionWaitPage,
 ]

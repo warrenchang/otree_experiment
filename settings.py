@@ -171,6 +171,24 @@ SESSION_CONFIGS = [
         'app_sequence': ['guess_number'],
     },
     {
+        'name': "simple_PD",
+        'display_name': "Prisoner's Dilemma",
+        'num_demo_participants': 4,
+        'treatment': 'random',
+        'debug': DEBUG,
+        'num_rounds': 10,
+        'app_sequence': ['repeated_game'],
+    },
+    {
+        'name': "coopetition",
+        'display_name': "Coopetition",
+        'num_demo_participants': 4,
+        'treatment': 'random',
+        'debug': DEBUG,
+        'num_rounds': 10,
+        'app_sequence': ['coopetition'],
+    },
+    {
         'name': 'PD_communication',
         'display_name': "PD Private Monitoring with Communication",
         'num_demo_participants': 4,
@@ -178,7 +196,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz','my_PD_practice90','prisoners_dilemma','guess_number','my_PD_survey','ravens','investment_task','payment_info'],
+        'app_sequence': ['my_PD_quiz','my_PD_practice90','repeated_game','guess_number','my_PD_survey','ravens','investment_task','payment_info'],
     },
     {
         'name': 'PD_public_d60',
@@ -188,7 +206,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'prisoners_dilemma', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'repeated_game', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {
@@ -243,7 +261,7 @@ SESSION_CONFIGS = [
         'debug': DEBUG,
         'continuation_probability': 0.6,
         'num_rounds': 76,
-        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'prisoners_dilemma', 'guess_number', 'my_PD_survey', 'ravens',
+        'app_sequence': ['my_PD_quiz', 'my_PD_practice90', 'repeated_game', 'guess_number', 'my_PD_survey', 'ravens',
                          'investment_task', 'payment_info'],
     },
     {

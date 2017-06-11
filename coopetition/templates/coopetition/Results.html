@@ -1,0 +1,71 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+
+{% block content %}
+    <p style="font-size:16px">Round {{ player.round_in_interaction }}</p>
+
+{% include Constants.instructions_template %}
+
+{% if player.treatment == 'reputation' %}
+{% include Constants.otherhistory_template %}
+{% endif %}
+
+
+<h5 style="text-align:center">
+    Summary of this round
+</h5>
+<table class="table" style="text-align:center">
+    <tr>
+        <th style="text-align:center">Your Allocation</th>
+        <th style="text-align:center">Other's Allocation</th>
+        <th style="text-align:center">Breakdown of earnings</th>
+    </tr>
+    <tr>
+        <td>P1: {{ player.a1 }}</td> <td>P1: {{ player.other_a1 }}</td> <td>Total P1 profit: {{ player.pie }} </td>
+    </tr>
+    <tr>
+        <td>P2: {{ player.a2 }}</td> <td>P2: {{ player.other_a2 }}</td> <td>Your share of P1 profit: {{player.pie_share}} </td>
+    </tr>
+    <tr>
+        <td>P3: {{ player.a3 }}</td> <td>P3: {{ player.other_a3 }}</td> <td>Your earnings from P3: {{player.P3_earnings}} </td>
+    </tr>
+</table>
+
+<div style="font-size:16px;text-align:center">
+
+    <p style="font-weight:bold">
+        Your earnings for this round: {{ player.potential_payoff }}
+    </p>
+    <p style="font-weight:bold">
+        Other's earnings for this round: {{ player.other_payoff }}
+    </p>
+    <p></p>
+</div>
+
+    <!--<table class="table-condensed" style="margin:auto; width:500px; margin-top:20px;text-align:center">-->
+        <!--<tr><td>Your P1:</td><td>{{ player.a1 }}</td></tr>-->
+        <!--<tr><td>Your P2:</td><td>{{ player.a2 }}</td></tr>-->
+        <!--<tr><td>Your P3:</td><td>{{ player.a3 }}</td></tr>-->
+        <!--<tr><td>Other's P1:</td><td>{{ player.other_a1 }}</td></tr>-->
+        <!--<tr><td>Other's P2:</td><td>{{ player.other_a2 }}</td></tr>-->
+        <!--<tr><td>Other's P3:</td><td>{{ player.other_a3 }}</td></tr>-->
+        <!--<tr><td>Your earnings:</td><td>{{ player.potential_payoff }}</td></tr>-->
+        <!--<tr><td>Other's earnings:</td><td>{{ player.other_payoff }}</td></tr>-->
+        <!--<tr><td colspan="2"><hr/></td></tr>-->
+    <!--</table>-->
+
+          <div style="text-align:right">
+            {% next_button %}
+        </div>
+
+    <hr>
+
+    {% include Constants.historyall_template %}
+
+
+{% endblock %}

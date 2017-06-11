@@ -1,0 +1,46 @@
+{% load otree_tags staticfiles %}
+
+{% if player.round_in_interaction != 1 %}
+<h5 style="text-align:center">
+    History
+</h5>
+<table class="table" style="text-align:center">
+    <tr>
+        <th style="text-align:center" rowspan="2">Round</th>
+        <th></th>
+        <th style="text-align:center" colspan="4">You</th>
+        <th></th>
+        <th style="text-align:center" colspan="4">Other</th>
+    </tr>
+    <tr>
+        <th></th>
+        <th style="text-align:center">P1</th>
+        <th style="text-align:center">P2</th>
+        <th style="text-align:center">P3</th>
+        <th style="text-align:center">Earnings</th>
+        <th></th>
+        <th style="text-align:center">P1</th>
+        <th style="text-align:center">P2</th>
+        <th style="text-align:center">P3</th>
+        <th style="text-align:center">Earnings</th>
+    </tr>
+    {% for p in player.in_previous_rounds %}
+        {% if p.interaction_number = player.interaction_number %}
+    <tr>
+        <td>{{ p.round_in_interaction}}</td>
+        <th></th>
+        <td>{{ p.a1 }}</td>
+        <td>{{ p.a2 }}</td>
+        <td>{{ p.a3 }}</td>
+        <td>{{ p.potential_payoff}}</td>
+        <th></th>
+        <td>{{ p.other_a1 }}</td>
+        <td>{{ p.other_a2 }}</td>
+        <td>{{ p.other_a3 }}</td>
+        <td>{{ p.other_payoff}}</td>
+    </tr>
+        {% endif %}
+    {% endfor %}
+
+    {% endif %}
+</table>

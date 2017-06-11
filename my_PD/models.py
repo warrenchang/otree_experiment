@@ -12,7 +12,7 @@ This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
 
 
 class Constants(BaseConstants):
-    name_in_url = 'prisoners_dilemma'
+    name_in_url = 'repeated_game'
     players_per_group = 2
 
     number_sequence = [2, 4, 3, 10, 4, 9, 3, 10, 7, 6, 4, 4, 3, 5, 1, 9, 6,
@@ -66,9 +66,6 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def before_session_starts(self):
         # this is run before the start of every round
-
-
-
 
         current_round_in_interaction = Constants.round_in_interactions[self.round_number-1]
 

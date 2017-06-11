@@ -12,18 +12,47 @@ This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
 
 
 class Constants(BaseConstants):
-    name_in_url = 'prisoners_dilemma'
+    name_in_url = 'repeated_game'
     players_per_group = 2
 
-    num_rounds = 10  # change num_rounds for testing purpose, but need to make sure that number_sequence
+    interactions = [
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    ]
+    round_in_interactions = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    ]
 
-    instructions_template = 'prisoners_dilemma/Instructions.html'
+    interaction_length = [10, 10, 10]
+    treatments = ['random', 'reputation', 'fixed']
+
+    num_rounds = 30  # change num_rounds for testing purpose, but need to make sure that number_sequence
+
+    interactions = [
+        1, 1, 1,
+        2, 2, 2,
+        3, 3, 3,
+    ]
+    round_in_interactions = [
+        1, 2, 3,
+        1, 2, 3,
+        1, 2, 3,
+    ]
+
+    interaction_length = [3, 3, 3]
+    treatments = ['random', 'reputation', 'fixed']
+
+    num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
+
 
     # payoff for the prisoner's dilemma
-    R = 130
-    T = 150
-    S = 5
-    P = 30
+    R = 20
+    T = 30
+    S = -10
+    P = 0
 
     payoff_matrix = {
         'A':
@@ -38,9 +67,34 @@ class Constants(BaseConstants):
             }
     }
 
+    instructions_template = 'repeated_game/Instructions.html'
+    history_template = 'repeated_game/History.html'
+    historyall_template = 'repeated_game/HistoryAllRounds.html'
+    otherhistory_template = 'repeated_game/OtherHistory.html'
+
 
 class Subsession(BaseSubsession):
-    pass
+
+    def before_session_starts(self):
+        # this is run before the start of every round
+        round_in_interaction = Constants.round_in_interactions[self.round_number-1]
+        interaction_number = Constants.interactions[self.round_number-1]
+        treatment = Constants.treatments[interaction_number-1]
+
+        print((interaction_number,round_in_interaction,treatment))
+
+        for p in self.get_players(): # set interaction number and round number
+            p.interaction_number = interaction_number
+            p.round_in_interaction = round_in_interaction
+            p.treatment = treatment
+            print((p.participant.id_in_session, p.interaction_number, p.round_in_interaction, p.treatment))
+
+        if round_in_interaction == 1: # at the start of each interaction, reshuffle group
+            self.group_randomly()
+        elif treatment != 'fixed':
+            self.group_randomly()
+        else:  # otherwise, group structure is the same as in the previous round
+            self.group_like_round(self.round_number-1)
 
 
 class Group(BaseGroup):
@@ -75,6 +129,7 @@ class Player(BasePlayer):
     my_id = models.PositiveIntegerField()
     interaction_number = models.PositiveIntegerField()
     round_in_interaction = models.PositiveIntegerField()
+    treatment = models.CharField()
 
     action = models.CharField(
         choices=['A', 'B'],
@@ -85,6 +140,7 @@ class Player(BasePlayer):
     partner_id = models.PositiveIntegerField()
     other_action = models.CharField(choices=['A','B'])
 
+    other_payoff = models.CurrencyField()
     cum_payoff = models.CurrencyField()
 
     def get_partner(self):

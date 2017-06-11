@@ -14,8 +14,10 @@ Raven's progressive matrices test measuring cognitive ability
 class Constants(BaseConstants):
     name_in_url = 'ravens'
     players_per_group = None
-    num_rounds = 10
-    answer_keys = [4,2,2,1,5,7,3,6,4,5]
+    minutes_given = 10
+    payment_per_question = 0.5
+    num_rounds = 12
+    answer_keys = [4, 2, 2, 1, 2, 7, 3, 5, 2, 5, 6, 4]
     instructions_template = 'ravens/Instructions.html'
 
 

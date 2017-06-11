@@ -1,11 +1,7 @@
 {% load otree_tags staticfiles %}
 
+
 <div class="instructions well well-lg">
-
-{#    <h3 class="panel-sub-heading">#}
-{#        Instructions#}
-{#    </h3>#}
-
     <link rel="stylesheet" type="text/css"
           href="{% static 'global/matrix.css' %}"/>
 
@@ -32,7 +28,28 @@
         </tr>
     </table>
 
-
     <hr>
-
+    {% if player.treatment == 'fixed' %}
+    <p>
+    You will be playing with <strong> the same </strong>
+        participant in different rounds.
+    <p>
+    {% endif %}
+    {% if player.treatment == 'random' %}
+    <p>
+    You will be <strong> randomly matched </strong> to a participant at the start of each round.
+    <p>
+    {% endif %}
+    {% if player.treatment == 'reputation' %}
+    <p>
+        You will be <strong> randomly matched </strong> to a participant at the start of each round.
+    </p>
+    <p>
+        <strong>
+            In each round after the first round, you will have information on the other participant's past plays.
+            The other participant will also know your past plays.
+        </strong>
+    </p>
+    {% endif %}
 </div>
+

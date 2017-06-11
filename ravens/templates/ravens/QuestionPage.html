@@ -7,12 +7,13 @@
 
 
 {% block content %}
-    <p>Question {{ player.round_number }} of 10</p>
+    <p>Question {{ player.round_number }} of {{ Constants.num_rounds }} </p>
 
     {% include Constants.instructions_template %}
 
     {#    <div style="text-align:center">#}
-     <img src="{% static image_path %}" height="450" width="420"/>
+     <!--<img src="{% static image_path %}" height="450" width="420"/>-->
+    <img src="{% static image_path %}" height="400" width="380"/>
 {#    <img src="{% static "ravens/example.jpg" %}"/>#}
     {#    </div>#}
 

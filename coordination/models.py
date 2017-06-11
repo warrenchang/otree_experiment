@@ -85,7 +85,6 @@ class Group(BaseGroup):
             # p1.participant.vars['payoff_PartII'] = p1.payoff * self.session.config['real_world_currency_per_point']
             # p2.participant.vars['payoff_PartII'] = p2.payoff * self.session.config['real_world_currency_per_point']
 
-
         # print((self.round_number,p1.payoff,p2.payoff))
         # print((p1.participant.id_in_session,p1.action,p1.payoff,p1.signal,p2.participant.id_in_session,p2.action,p2.payoff,p2.signal))
 

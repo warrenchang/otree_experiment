@@ -7,13 +7,16 @@
 {#    </h3>#}
     <div style="text-font:16px">
         <p >
-            You will be presented with 10 problems, each showing a pattern with a bit cut out of it.
-            Look at the pattern, think what piece is needed to complete the pattern correctly both along the rows and down the columns,
+            You will be presented with {{ Constants.num_rounds }} problems,
+            each showing a pattern with a bit cut out of it.
+            Look at the pattern, think what piece is needed to complete the pattern correctly
+            both along the rows and down the columns,
             BUT NOT THE DIAGONALS.
         </p>
 
         <p >
-            You will be paid AED 2 for each correct problem you solve. You have 1 minute to complete each problem.
+            You will be paid RMB {{ Constants.payment_per_question}} for each correct problem you solve.
+            You have {{ Constants.minutes_given }} minutes to complete all problems.
         </p>
 
 
