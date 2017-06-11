@@ -174,6 +174,8 @@ SESSION_CONFIGS = [
         'name': 'in_class_test',
         'display_name': "In class experiment test",
         'num_demo_participants': 14,
+        'real_world_currency_per_point': 1/9,
+        'participation_fee': 0,
         'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
                          'repeated_game_randpay','ravens', 'payment_simple'
                          ],
