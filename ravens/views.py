@@ -38,8 +38,12 @@ class QuestionPage(Page):
             self.player.answer = random.randint(1,8)
         self.player.ans_correct = self.player.answer == Constants.answer_keys[self.round_number-1]
         self.player.participant.vars['payoff_ravens'] += self.player.ans_correct * Constants.payment_per_question
-        self.player.payoff = (self.player.ans_correct*Constants.payment_per_question /
-                              self.session.config['real_world_currency_per_point']) # to measure in point
+        if Constants.payment_in_points > 0:
+            self.player.payoff = self.player.ans_correct*Constants.payment_in_points
+
+        else:
+            self.player.payoff = (self.player.ans_correct*Constants.payment_per_question /
+                                  self.session.config['real_world_currency_per_point']) # to measure in point
 
 
 class Results(Page):

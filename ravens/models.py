@@ -16,6 +16,7 @@ class Constants(BaseConstants):
     players_per_group = None
     minutes_given = 10
     payment_per_question = 0.5
+    payment_in_points = 3
     num_rounds = 12
     answer_keys = [4, 2, 2, 1, 2, 7, 3, 5, 2, 5, 6, 4]
     instructions_template = 'ravens/Instructions.html'

@@ -10,6 +10,7 @@ class BasePage(Page):
         v =  {
             # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
+            'num_rounds': Constants.interaction_length[0],
         }
         v.update(self.extra_vars_for_template())
         return v
@@ -23,6 +24,7 @@ class BaseWaitPage(WaitPage):
         return {
             # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
+            'num_rounds': Constants.interaction_length[0],
         }
 
 

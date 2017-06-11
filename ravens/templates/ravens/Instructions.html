@@ -15,7 +15,11 @@
         </p>
 
         <p >
+            {% if Constants.payment_in_points > 0 %}
+            You will be paid {{ Constants.payment_in_points}} points for each correct problem you solve.
+            {% else %}
             You will be paid RMB {{ Constants.payment_per_question}} for each correct problem you solve.
+            {% endif %}
             You have {{ Constants.minutes_given }} minutes to complete all problems.
         </p>
 

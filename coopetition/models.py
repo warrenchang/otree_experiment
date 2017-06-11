@@ -46,24 +46,22 @@ class Constants(BaseConstants):
     treatments = ['random', 'random', 'fixed', 'fixed']
     compete = [0, 1, 0, 1]
 
-
-    interactions = [
-        1, 1, 1,
-        2, 2, 2,
-        3, 3, 3,
-        4, 4, 4,
-    ]
-    round_in_interactions = [
-        1, 2, 3,
-        1, 2, 3,
-        1, 2, 3,
-        1, 2, 3,
-    ]
-
-    interaction_length = [3, 3, 3, 3]
+    # interactions = [
+    #     1, 1, 1,
+    #     2, 2, 2,
+    #     3, 3, 3,
+    #     4, 4, 4,
+    # ]
+    # round_in_interactions = [
+    #     1, 2, 3,
+    #     1, 2, 3,
+    #     1, 2, 3,
+    #     1, 2, 3,
+    # ]
+    #
+    # interaction_length = [3, 3, 3, 3]
 
     num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
-
 
 
 

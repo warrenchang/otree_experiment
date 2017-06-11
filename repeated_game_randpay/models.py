@@ -42,19 +42,19 @@ class Constants(BaseConstants):
 
 
     interactions = [
-        1, 1, 1,
-        2, 2, 2,
-        3, 3, 3,
-        4, 4, 4,
+        1, 1, 1, 1, 1,
+        2, 2, 2, 2, 2,
+        3, 3, 3, 3, 3,
+        4, 4, 4, 4, 4,
     ]
     round_in_interactions = [
-        1, 2, 3,
-        1, 2, 3,
-        1, 2, 3,
-        1, 2, 3,
+        1, 2, 3, 4, 5,
+        1, 2, 3, 4, 5,
+        1, 2, 3, 4, 5,
+        1, 2, 3, 4, 5,
     ]
 
-    interaction_length = [3, 3, 3, 3]
+    interaction_length = [5, 5, 5, 5]
 
     num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
 
@@ -145,7 +145,7 @@ class Subsession(BaseSubsession):
         else:  # otherwise, group structure is the same as in the previous round
             self.group_like_round(self.round_number-1)
 
-        print('Session paying round',self.session.vars['paying_rounds'] )
+        # print('Session paying round',self.session.vars['paying_rounds'] )
 
 
 class Group(BaseGroup):
@@ -171,7 +171,7 @@ class Group(BaseGroup):
         # print((self.round_number,p1.payoff,p2.payoff))
 
         p1.cum_payoff = sum([p.payoff for p in p1.in_all_rounds()
-                                      if p.interaction_number == p1.interaction_number])
+                             if p.interaction_number == p1.interaction_number])
         p2.cum_payoff = sum([p.payoff for p in p2.in_all_rounds()
                              if p.interaction_number == p1.interaction_number])
 

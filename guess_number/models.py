@@ -55,8 +55,8 @@ class Group(BaseGroup):
         self.num_winners = len(winners)
 
         for player in winners:
-            player.is_winner = True
             if self.round_number == self.session.vars['paying_round']:
+                player.is_winner = True
                 player.payoff = Constants.jackpot / self.num_winners / self.session.config['real_world_currency_per_point']
                 self.session.vars['num_winners'] = self.num_winners
 

@@ -27,29 +27,40 @@ class Constants(BaseConstants):
     ]
     interaction_length = [10, 10, 10]
 
-    treatments = ['random', 'reputation', 'fixed']
-
+    treatments = ['random', 'fixed', 'reputation']
 
     interactions = [
-        1, 1, 1,
-        2, 2, 2,
-        3, 3, 3,
+        1, 1, 1, 1, 1,
+        2, 2, 2, 2, 2,
+        3, 3, 3, 3, 3,
     ]
     round_in_interactions = [
-        1, 2, 3,
-        1, 2, 3,
-        1, 2, 3,
+        1, 2, 3, 4, 5,
+        1, 2, 3, 4, 5,
+        1, 2, 3, 4, 5,
     ]
-    interaction_length = [3, 3, 3]
+
+    interaction_length = [5, 5, 5]
+
+    # interactions = [
+    #     1, 1, 1,
+    #     2, 2, 2,
+    #     3, 3, 3,
+    # ]
+    # round_in_interactions = [
+    #     1, 2, 3,
+    #     1, 2, 3,
+    #     1, 2, 3,
+    # ]
+    # interaction_length = [3, 3, 3]
 
     num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
 
-
     # payoff for the prisoner's dilemma
-    R = 2
-    S = -2
-    T = 4
-    P = 0
+    R = 4
+    S = 0
+    T = 6
+    P = 2
 
     payoff_matrix = {
         'A':
@@ -112,12 +123,10 @@ class Group(BaseGroup):
 
         # print((self.round_number,p1.payoff,p2.payoff))
 
-        p1.cum_payoff = sum([p.payoff for p in p1.in_all_rounds()])
-        p2.cum_payoff = sum([p.payoff for p in p2.in_all_rounds()])
-
-        # update payoff for Part I in terms of real currency
-        p1.participant.vars['real_payoff_PartI'] = p1.cum_payoff * self.session.config['real_world_currency_per_point']
-        p2.participant.vars['real_payoff_PartI'] = p2.cum_payoff * self.session.config['real_world_currency_per_point']
+        p1.cum_payoff = sum([p.payoff for p in p1.in_all_rounds()
+                             if p.interaction_number == p1.interaction_number])
+        p2.cum_payoff = sum([p.payoff for p in p2.in_all_rounds()
+                             if p.interaction_number == p1.interaction_number])
 
         # print((p1.participant.id_in_session,p1.action,p1.payoff,p1.signal,p2.participant.id_in_session,p2.action,p2.payoff,p2.signal))
 

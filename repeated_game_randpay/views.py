@@ -10,6 +10,7 @@ class BasePage(Page):
         v =  {
             # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
+            'num_rounds': Constants.interaction_length[0],
             'p11': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['X'],
             'p12': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['Y'],
             'p21': Constants.payoff_matrix[str(self.player.interaction_number)]['Y']['X'],
@@ -27,6 +28,7 @@ class BaseWaitPage(WaitPage):
         return {
             # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
+            'num_rounds': Constants.interaction_length[0],
             'p11': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['X'],
             'p12': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['Y'],
             'p21': Constants.payoff_matrix[str(self.player.interaction_number)]['Y']['X'],
