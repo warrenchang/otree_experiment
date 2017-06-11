@@ -7,7 +7,7 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
+A series of finitely repeated coordination games.
 """
 
 

@@ -7,7 +7,7 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-Stag-hunt game to measure the tolerance of strategic uncertainty
+Choosing meeting place and time. A coordination game that illustrates Schelling's focal point.
 """
 
 def lcs(S,T,word):

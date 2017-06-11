@@ -7,7 +7,7 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-Stag-hunt game to measure the tolerance of strategic uncertainty
+Questionnaire with emphasis on Big 5 personalities (OCEAN) and consideration of future consequences (CFC)
 """
 
 GENDER_CHOICES = (

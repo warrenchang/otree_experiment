@@ -7,7 +7,7 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
+Coopetition game: trade-off between value co-creation and value appropriation
 """
 
 def get_share(p1,p2):

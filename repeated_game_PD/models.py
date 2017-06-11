@@ -7,7 +7,8 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-This is an infinitely repeated "Prisoner's Dilemma" with private monitoring.
+Finitely repeated "Prisoner's Dilemma", 3 different treatments: random matching, fixed matching, random matching
+ with past behavior available.
 """
 
 

@@ -7,7 +7,7 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-Stag-hunt game to measure the tolerance of strategic uncertainty
+Beauty contest as a coordination game: choose the most beautiful face.
 """
 
 
