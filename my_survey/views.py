@@ -11,7 +11,7 @@ class StartPage(Page):
         if self.round_number == 1:
             print('This is the start of PD survey')
         print(self.participant.vars)
-        return self.round_number == 1
+        return self.round_number == 1 and (not self.session.config['debug'])
 
 
 # class SurveyIntro(Page):
@@ -31,20 +31,6 @@ class SurveyPage2(SurveyPage):
 class SurveyPage3(SurveyPage):
     pass
 
-class SurveyPage4_COM(SurveyPage):
-    def is_displayed(self):
-        return self.session.config['treatment'] == 'COM'
-
-class SurveyPage4_PBL(SurveyPage):
-    def is_displayed(self):
-        return self.session.config['treatment'] == 'PBL'
-
-class SurveyPage5(SurveyPage):
-    pass
-
-
-class SurveyPage6(SurveyPage):
-    pass
 
 # Create a list of survey pages.
 # The order is important! The survey questions are taken in the same order
@@ -54,10 +40,6 @@ survey_pages = [
     SurveyPage1,
     SurveyPage2,
     SurveyPage3,
-    SurveyPage4_COM,
-    SurveyPage4_PBL,
-    SurveyPage5,
-    SurveyPage6,
 ]
 
 # Common setup for all pages (will set the questions per page)

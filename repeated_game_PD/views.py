@@ -8,7 +8,7 @@ import random
 class BasePage(Page):
     def vars_for_template(self):
         v =  {
-            'treatment': self.session.config['treatment'],
+            # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
         }
         v.update(self.extra_vars_for_template())
@@ -21,7 +21,7 @@ class BasePage(Page):
 class BaseWaitPage(WaitPage):
     def vars_for_template(self):
         return {
-            'treatment': self.session.config['treatment'],
+            # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
         }
 

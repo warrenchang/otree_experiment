@@ -3,9 +3,10 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 import random
 
+
 class Introduction(Page):
     def is_displayed(self):
-        return self.round_number == 1
+        return self.round_number == 1 and (not self.session.config['debug'])
 
 
 class Guess(Page):
@@ -14,7 +15,7 @@ class Guess(Page):
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.player.guess = random.randint(0,100)
+            self.player.guess = random.randint(0, 100)
 
 
 class DecisionWaitPage(WaitPage):
@@ -43,7 +44,7 @@ class ResultsWaitPage(WaitPage):
 
 
 class Payment(Page):
-    wait_for_all_groups = True
+    # wait_for_all_groups = True
 
     def is_displayed(self):
         return self.round_number == Constants.num_rounds

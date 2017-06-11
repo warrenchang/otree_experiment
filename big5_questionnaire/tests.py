@@ -7,6 +7,7 @@ import random
 
 class PlayerBot(Bot):
     def play_round(self):
-        yield (views.Decision, {"choice": random.randint(1,5)})
+        num_participants = len(self.subsession.get_players())
+        yield (views.Decision, {"action": random.choice(['X','Y']), "guess": random.randint(0,num_participants-1)})
         if self.subsession.round_number == Constants.num_rounds:
             yield (views.Results)

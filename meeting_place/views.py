@@ -9,9 +9,6 @@ class StartPage(Page):
      def is_displayed(self):
          return self.round_number == 1 and (not self.session.config['debug'])
 
-     def before_next_page(self):
-         print(('meeting_place:leaving_StartPage',self.participant.vars))
-
 
 class Decision(Page):
     form_model = models.Player
@@ -29,16 +26,12 @@ class DecisionWaitPage(WaitPage):
     def after_all_players_arrive(self):
         for g in self.subsession.get_groups():
             g.interact()
-            print('players have interacted!')
-
 
 
 class Results(Page):
 
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
-
-
 
 
 page_sequence = [

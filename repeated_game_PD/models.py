@@ -78,7 +78,7 @@ class Subsession(BaseSubsession):
         interaction_number = Constants.interactions[self.round_number-1]
         treatment = Constants.treatments[interaction_number-1]
 
-        print((interaction_number,round_in_interaction,treatment))
+        # print((interaction_number,round_in_interaction,treatment))
 
         for p in self.get_players(): # set interaction number and round number
             p.interaction_number = interaction_number

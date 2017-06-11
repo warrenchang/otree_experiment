@@ -8,7 +8,7 @@ import random
 class BasePage(Page):
     def vars_for_template(self):
         v =  {
-            'treatment': self.session.config['treatment'],
+            # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
             'p11': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['X'],
             'p12': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['Y'],
@@ -25,7 +25,7 @@ class BasePage(Page):
 class BaseWaitPage(WaitPage):
     def vars_for_template(self):
         return {
-            'treatment': self.session.config['treatment'],
+            # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
             'p11': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['X'],
             'p12': Constants.payoff_matrix[str(self.player.interaction_number)]['X']['Y'],

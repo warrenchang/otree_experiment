@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+   Payment Information
+{% endblock %}
+
+{% block content %}
+
+<p style="text-align:center;font-size:16px">
+            This is the end of the experiment. Please wait to be paid. </p>
+
+        <p style="text-align:center;font-size:16px">
+            {% if participation_fee != 0 %}
+             Your participation fee is {{ participation_fee }}
+            {% endif %}
+        </p>
+
+<p style="text-align:center;font-size:18px">
+        <strong>
+            Your total payoff is {{ final_payment }}
+        </strong>
+        </p>
+
+
+{% endblock %}
+
+{% block form %}
+
+{% endblock %}

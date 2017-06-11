@@ -2,28 +2,28 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Please wait for the experiment to continue.
+Please wait for the experiment to continue.
 {% endblock %}
 
 {% block content %}
 
 {% if player.round_number == Constants.num_rounds %}
 
-        <p>
-            You will make your choice again.
-        </p>
+<p>
+    You will make your choice again.
+</p>
 <p>
 
-            This time, after you make your choice, you will be randomly matched with another participant in this room. If your
-            choice is the same as the choice of the other participant, both of you will receive a payment of RMB 2.
-            If your choices are different, neither of you receives any payment.
-        </p>
+    This time, after you make your choice, you will be randomly matched with another participant in this room. If your
+    choice is the same as the choice of the other participant, both of you will receive a payment of RMB 2.
+    If your choices are different, neither of you receives any payment.
+</p>
 
 {% endif %}
 
 
-{#    <div style="text-align:right">#}
-{#    {% next_button %}#}
-{#    </div>#}
+<!--<div style="text-align:right">-->
+    <!--{% next_button %}-->
+<!--</div>-->
 
 {% endblock %}

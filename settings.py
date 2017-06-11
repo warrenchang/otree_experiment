@@ -154,16 +154,32 @@ mturk_hit_settings = {
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1/120,
     'participation_fee': 10.00,
+    'debug': DEBUG,
     'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
 }
 
 SESSION_CONFIGS = [
     {
+        'name': 'in_class',
+        'display_name': "In class experiment",
+        'num_demo_participants': 4,
+        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
+                         'repeated_game_randpay','ravens', 'big5_questionnaire', 'payment_simple'
+                         ],
+    },
+    {
+        'name': 'in_class_test',
+        'display_name': "In class experiment",
+        'num_demo_participants': 14,
+        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
+                         'repeated_game_randpay','ravens', 'payment_simple'
+                         ],
+    },
+    {
         'name': 'beauty_contest',
         'display_name': "Beauty contest",
         'num_demo_participants': 2,
-        'debug': DEBUG,
         'app_sequence': ['pure_coordination'],
     },
     {
@@ -194,26 +210,16 @@ SESSION_CONFIGS = [
         'display_name': "Coopetition",
         'num_demo_participants': 4,
         'treatment': 'random',
-        'debug': DEBUG,
         'num_rounds': 10,
         'app_sequence': ['coopetition'],
     },
     {
-        'name': "simple_coordination",
+        'name': "coordination_games",
         'display_name': "Coordination game 4 matches",
         'num_demo_participants': 4,
         'treatment': 'random',
-        'debug': DEBUG,
         # 'num_rounds': 10,
         'app_sequence': ['repeated_game_randpay'],
-    },
-    {
-        'name': "big5_survey",
-        'display_name': "Big 5 survey",
-        'num_demo_participants': 1,
-        'debug': DEBUG,
-        # 'num_rounds': 10,
-        'app_sequence': ['big5_survey'],
     },
     {
         'name': 'Raven',
@@ -222,9 +228,24 @@ SESSION_CONFIGS = [
         'app_sequence': ['ravens'],
     },
     {
+        'name': 'my_questionnaire',
+        'display_name': "Questionnaire",
+        'num_demo_participants': 1,
+        'debug': DEBUG,
+        'app_sequence': ['big5_questionnaire'],
+    },
+    {
+        'name': 'payment_info',
+        'display_name': "Payment information",
+        'num_demo_participants': 1,
+        'debug': DEBUG,
+        'app_sequence': ['payment_simple'],
+    },
+    {
         'name': 'my_survey',
         'display_name': "Survey questions",
         'num_demo_participants': 1,
+        'debug': DEBUG,
         'app_sequence': ['my_survey'],
     },
     {

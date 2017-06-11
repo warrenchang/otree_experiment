@@ -6,12 +6,9 @@ import random
 
 
 class StartPage(Page):
-    # def is_displayed(self):
-    #     print(('pure_coordination:at_StartPage',self.participant.vars))
-    #     return self.round_number == 1 and (not self.session.config['debug'])
-
-    def before_next_page(self):
-        print(('pure_coordination:leaving_StartPage',self.participant.vars))
+    def is_displayed(self):
+        # print(('pure_coordination:at_StartPage',self.participant.vars))
+        return (not self.session.config['debug'])
 
 
 class Decision(Page):
@@ -30,7 +27,7 @@ class DecisionWaitPage(WaitPage):
     def after_all_players_arrive(self):
         for g in self.subsession.get_groups():
             g.interact()
-            print('players have interacted!')
+            # print('players have interacted!')
 
 
 

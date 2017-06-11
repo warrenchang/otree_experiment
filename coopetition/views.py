@@ -46,14 +46,14 @@ class Decision(BasePage):
         if values["a1"] + values["a2"] > 10:
             return 'The sum of the numbers cannot be greater than 0.'
 
-        if values["a1"] + values["a2"] + values["a3"] != 10:
+        if abs(values["a1"] + values["a2"] + values["a3"] - 10)>0.01:
             a3_value = 10 - values["a1"] - values["a2"]
             return 'The numbers must add up to 10. In order to add up to 10, you need to allocate %.2f to P3'%a3_value
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.player.a1 = random.random()*5
-            self.player.a2 = random.random()*5
+            self.player.a1 = round(random.random()*5,2)
+            self.player.a2 = round(random.random()*5,2)
             self.player.a3 = 10 - self.player.a1 - self.player.a2
 
 

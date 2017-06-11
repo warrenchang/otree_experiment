@@ -45,181 +45,90 @@ SURVEY_DEFINITIONS = (
     {
         'page_title': 'Survey Questions - Page 1',
         'survey_fields': [
-            ('gender', {
-                'text': 'What is  your gender.',
-                'field': models.CharField(choices=GENDER_CHOICES),
+            ('CFC1', {
+                'text': 'My behavior is only influenced by the immediate (i.e., a matter of days or weeks) outcomes of my actions.',
+                'field': models.PositiveIntegerField(choices=[1,2,3,4,5,6,7],widget=widgets.RadioSelectHorizontal()),
+            }),
+            ('CFC2', {
+                'text': 'I think that sacrificing now is usually unnecessary since future outcomes can be dealt with at a later time.',
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                                     widget=widgets.RadioSelectHorizontal()),
+            }),
+            ('CFC3', {
+                'text': 'I only act to satisfy immediate concerns, figuring that I will take care of future problems that may occur at a later date.',
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                                     widget=widgets.RadioSelectHorizontal()),
+            }),
+            ('CFC4', {
+                'text': 'Since my day to day work has specific outcomes, it is more important to me than behavior that has distant outcomes.',
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                                     widget=widgets.RadioSelectHorizontal()),
+            }),
+            ('CFC5', {
+                'text': 'When I make a decision, I think about how it might affect me in the future.',
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                                     widget=widgets.RadioSelectHorizontal()),
             }),
         ]
     },
     {
         'page_title': 'Survey Questions - Page 2',
         'survey_fields': [
-            ('religion', {   # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'What religion are you?',   # survey question
-                'field':  models.CharField(choices=['Muslim',  'Christian', 'Buddhism','Hindu',
-                                                    'None','Other','Rather not to say'
-                                                    ]),
+            ('OCEAN1', {   # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Extraverted, enthusiastic (外向的，热情的)',   # survey question
+                'field':  models.PositiveIntegerField(choices=[1,2,3,4,5,6,7],
+                                                    widget=widgets.RadioSelectHorizontal()),
             }),
-        ]
-    },
-    {
-        'page_title': 'Survey Questions - Page 3',
-        'survey_fields': [
-            ('school_year', {   # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'Which year are you at the university?',   # survey question
-                'field':  models.CharField(choices=[ '1st year', '2nd year', '3rd year', '4th or more', 'Graduate student'
-                                                     ]),
+            ('OCEAN2', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Critical, inclined to argue with others (有些挑剔，爱与人争论)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
             }),
-        ]
-    },
-    # {
-    #     'page_title': 'Survey Questions - Page 4',
-    #     'survey_fields': [
-    #         ('importance_self',
-    #          {  # field name (which will also end up in your "Player" class and hence in your output data)
-    #              'text': 'When making your choice in Part I, how important it is to consider how this choice may affect your earnings in this interaction?',
-    #              # survey question
-    #              'field': models.PositiveIntegerField(
-    #                  choices=[
-    #                      [1, '1. Very unimportant'],
-    #                      [2, '2. Moderately unimportant'],
-    #                      [3, '3. Neutral'],
-    #                      [4, '4. Moderately important'],
-    #                      [5, '5. Very important']
-    #                  ]),
-    #          }),
-    #         ('importance_other',
-    #          {  # field name (which will also end up in your "Player" class and hence in your output data)
-    #              'text': "When making your choice in Part I, how important it is to consider how this choice may affect the other person's earnings in this interaction?",
-    #              # survey question
-    #              'field': models.PositiveIntegerField(
-    #                  choices=[
-    #                      [1, '1. Very unimportant'],
-    #                      [2, '2. Moderately unimportant'],
-    #                      [3, '3. Neutral'],
-    #                      [4, '4. Moderately important'],
-    #                      [5, '5. Very important']
-    #                  ]),
-    #          }),
-    #         ('importance_total',
-    #          {  # field name (which will also end up in your "Player" class and hence in your output data)
-    #              'text': 'When making your choice in Part I, how important it is to consider how this choice may lead to higher total earnings for you and the other person in this interaction?',
-    #              # survey question
-    #              'field': models.PositiveIntegerField(
-    #                  choices=[
-    #                      [1, '1. Very unimportant'],
-    #                      [2, '2. Moderately unimportant'],
-    #                      [3, '3. Neutral'],
-    #                      [4, '4. Moderately important'],
-    #                      [5, '5. Very important']
-    #                  ]),
-    #          }),
-    #     ]
-    # },
-    {
-        'page_title': 'Survey Questions - Page 4',
-        'survey_fields': [
-            ('satisfaction1',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'On a scale from 1 to 5, please indicate, overall, how dissatisfied/satisfied you are with the outcomes of Part I',
-                 # survey question
-                 'field': models.PositiveIntegerField(
-                     choices=[
-                         [1, '1. Very dissatisfied'],
-                         [2, '2. Moderately dissatisfied'],
-                         [3, '3. Neutral'],
-                         [4, '4. Moderately satisfied'],
-                         [5, '5. Very satisfied']
-                     ]),
-             }),
-            ('strategy1', {  # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'Describe your strategy for Part I: How did you make the choice? Did you base your choice on the signal you received? How did you choose the message to send? How did you base your choice on the messages you sent or received.',
-            # survey question
-                'field': models.TextField(),
+            ('OCEAN3', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Dependable, self-disciplined. (然人觉得可靠，自律的)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
             }),
-            ('strategy_again1',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'What would you do differently if you can do Part I again?',
-                 'field': models.TextField(),
-             }),
+            ('OCEAN4', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Anxious, easily upset. (易于紧张，易于烦乱的)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
+            }),
+            ('OCEAN5', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'A deep thinker, creative (有深刻思想，有创造力)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
+            }),
 
         ]
     },
     {
-        'page_title': 'Survey Questions - Page 4',
+        'page_title': 'Survey Questions - Page 2',
         'survey_fields': [
-            ('satisfaction1',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'On a scale from 1 to 5, please indicate, overall, how dissatisfied/satisfied you are with the outcomes of Part I',
-                 # survey question
-                 'field': models.PositiveIntegerField(
-                     choices=[
-                         [1, '1. Very dissatisfied'],
-                         [2, '2. Moderately dissatisfied'],
-                         [3, '3. Neutral'],
-                         [4, '4. Moderately satisfied'],
-                         [5, '5. Very satisfied']
-                     ]),
-             }),
-            ('strategy1', {  # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'Describe your strategy for Part I: How did you make the choice? Did you base your choice on the signal you received or the other person receive?',
-                # survey question
-                'field': models.TextField(),
+            ('OCEAN6', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Reserved, quiet (矜持的，安静的)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
             }),
-            ('strategy_again1',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'What would you do differently if you can do Part I again?',
-                 'field': models.TextField(),
-             }),
-
-        ]
-    },
-    {
-        'page_title': 'Survey Questions - Page 5',
-        'survey_fields': [
-            ('satisfaction2',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'On a scale from 1 to 5, please indicate, overall, how dissatisfied/satisfied you are with the outcomes of Part II',
-                 # survey question
-                 'field': models.PositiveIntegerField(
-                     choices=[
-                         [1, '1. Very dissatisfied'],
-                         [2, '2. Moderately dissatisfied'],
-                         [3, '3. Neutral'],
-                         [4, '4. Moderately satisfied'],
-                         [5, '5. Very satisfied']
-                     ]),
-             }),
-            ('strategy2', {  # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'Describe your strategy for Part II. How did you make your decision?',
-                'field': models.TextField(),
+            ('OCEAN7', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Sympathetic, warm. （有同情心，热心的)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
             }),
-            ('strategy_again2',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'What would you do differently if you can do Part II again?',
-                 'field': models.TextField(),
-             }),
-
-        ]
-    },
-    {
-        'page_title': 'Survey Questions - Page 6',
-        'survey_fields': [
-            ('difficulty',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'Do you consider the first two parts of the experiment easy to understand and follow?',
-                 'field': models.PositiveIntegerField(
-                     choices=[
-                         [1, '1. Very easy'],
-                         [2, '2. Easy'],
-                         [3, '3. Moderate'],
-                         [4, '4. Difficult'],
-                         [5, '5. Very difficult']
-                     ]),
-             }),
-            ('experiment_like', {  # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'What you like/dislike about the experiment? Which part is hard to follow?',
-                'field': models.TextField(),
+            ('OCEAN8', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Disorganized, careless. (不是很有条理，有点儿粗心的)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
+            }),
+            ('OCEAN9', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Calm, emotionally stable (冷静的，情绪稳定的)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
+            }),
+            ('OCEAN10', {  # field name (which will also end up in your "Player" class and hence in your output data)
+                'text': 'Conventional, preferring work that is routine (传统的，喜欢按部就班的工作)',  # survey question
+                'field': models.PositiveIntegerField(choices=[1, 2, 3, 4, 5, 6, 7],
+                                          widget=widgets.RadioSelectHorizontal()),
             }),
 
         ]
