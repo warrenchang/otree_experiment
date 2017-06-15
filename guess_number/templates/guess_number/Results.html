@@ -29,14 +29,14 @@ Results
     <p></p>
     <p align="Center">
         {% if player.is_winner %}
-        {% if group.num_winners > 1 %}
-        Therefore, you are one of the {{ group.num_winners }} winners
-        who tied for the best guess.
+           {% if group.num_winners > 1 %}
+              Therefore, you are one of the {{ group.num_winners }} winners
+              who tied for the best guess.
+           {% else %}
+              Therefore, you won!
+           {% endif %}
         {% else %}
-        Therefore, you win!
-        {% endif %}
-        {% else %}
-        Therefore, you did not win.
+            Therefore, you did not win.
         {% endif %}
     </p>
     <p></p>

@@ -54,7 +54,7 @@ class Decision(BasePage):
         if self.timeout_happened:
             self.player.a1 = round(random.random()*5,2)
             self.player.a2 = round(random.random()*5,2)
-            self.player.a3 = 10 - self.player.a1 - self.player.a2
+            self.player.a3 = round(10 - self.player.a1 - self.player.a2,2)
 
 
 class DecisionWaitPage(BaseWaitPage):

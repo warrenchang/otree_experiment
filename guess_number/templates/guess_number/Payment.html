@@ -19,15 +19,15 @@ Results
         <tr><td>Number of winners:</td><td>{{ num_winners }}</td></tr>
     </table>
     <p align="Center">
-        {% if player.is_winner %}
-        {% if num_winners > 1 %}
-       You are one of the {{ num_winners }} winners
-        who tied for the best guess.
+        {% if is_winner %}
+           {% if num_winners > 1 %}
+              Therefore, you are one of the {{ num_winners }} winners
+              who tied for the best guess.
+           {% else %}
+              Therefore, you win!
+           {% endif %}
         {% else %}
-        You are the only winner.
-        {% endif %}
-        {% else %}
-        Your did not win.
+            Therefore, you did not win.
         {% endif %}
     </p>
 

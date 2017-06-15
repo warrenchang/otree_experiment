@@ -71,7 +71,7 @@ REAL_WORLD_CURRENCY_CODE = 'AED '
 REAL_WORLD_CURRENCY_CODE = 'RMB '
 USE_POINTS = True
 # POINTS_CUSTOM_NAME = 'tokens'
-REAL_WORLD_CURRENCY_DECIMAL_PLACES = 0
+REAL_WORLD_CURRENCY_DECIMAL_PLACES = 1
 
 # e.g. en, de, fr, it, ja, zh-hans
 # see: https://docs.djangoproject.com/en/1.9/topics/i18n/#term-language-code
@@ -164,7 +164,7 @@ SESSION_CONFIGS = [
         'name': 'in_class',
         'display_name': "In class experiment",
         'num_demo_participants': 4,
-        'real_world_currency_per_point': 1/9,
+        'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
         'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
                          'repeated_game_randpay','ravens', 'big5_questionnaire', 'payment_simple'
@@ -174,7 +174,7 @@ SESSION_CONFIGS = [
         'name': 'in_class_test',
         'display_name': "In class experiment test",
         'num_demo_participants': 14,
-        'real_world_currency_per_point': 1/9,
+        'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
         'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
                          'repeated_game_randpay','ravens', 'payment_simple'
@@ -183,7 +183,7 @@ SESSION_CONFIGS = [
     {
         'name': 'beauty_contest',
         'display_name': "Beauty contest",
-        'num_demo_participants': 2,
+        'num_demo_participants': 4,
         'app_sequence': ['pure_coordination'],
     },
     {
@@ -196,7 +196,7 @@ SESSION_CONFIGS = [
     {
         'name': 'guess_number',
         'display_name': "Guess number",
-        'num_demo_participants': 1,
+        'num_demo_participants': 3,
         'debug': DEBUG,
         'app_sequence': ['guess_number'],
     },

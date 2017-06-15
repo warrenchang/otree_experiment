@@ -29,6 +29,7 @@ def lcs(S,T,word):
                     lcs_set = S[i-c+1:i+1]
     return lcs_set
 
+
 class Constants(BaseConstants):
     name_in_url = 'meeting'
     players_per_group = 2

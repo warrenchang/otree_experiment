@@ -16,7 +16,7 @@ See https://en.wikipedia.org/wiki/Guess_2/3_of_the_average
 
 class Constants(BaseConstants):
     players_per_group = None
-    num_rounds = 5
+    num_rounds = 2
     p = 2/3 # the value of p in p-beauty context
     name_in_url = 'guess_number'
 
@@ -54,14 +54,23 @@ class Group(BaseGroup):
         winners = [player for player in players if player.guess == self.best_guess]
         self.num_winners = len(winners)
 
+        # set winners and payoffs
         for player in winners:
+            player.is_winner = True
             if self.round_number == self.session.vars['paying_round']:
-                player.is_winner = True
                 player.payoff = Constants.jackpot / self.num_winners / self.session.config['real_world_currency_per_point']
-                self.session.vars['num_winners'] = self.num_winners
+
+        if self.round_number == self.session.vars['paying_round']:
+            self.session.vars['num_winners'] = self.num_winners
+            for player in players:
+                player.participant.vars['is_winner'] = player.is_winner
+                # print(player.participant.vars)
 
     def correct_number_history(self):
         return [g.correct_number for g in self.in_previous_rounds()]
+
+    def average_number_history(self):
+        return [g.average for g in self.in_previous_rounds()]
 
 
 class Player(BasePlayer):

@@ -52,8 +52,9 @@ class Payment(Page):
     def vars_for_template(self):
         paying_round = self.session.vars['paying_round']
         num_winners = self.session.vars['num_winners']
+        is_winner = self.participant.vars['is_winner']
         cum_payoff = sum([p.payoff for p in self.player.in_all_rounds()]).to_real_world_currency(self.session)
-        return {'paying_round': paying_round, 'num_winners':num_winners, 'cum_payoff':cum_payoff}
+        return {'paying_round': paying_round, 'num_winners':num_winners, 'is_winner':is_winner, 'cum_payoff':cum_payoff}
 
 
 page_sequence = [Introduction,

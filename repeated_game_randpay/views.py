@@ -56,7 +56,7 @@ class Decision(BasePage):
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.player.action = random.choice(['A','B'])
+            self.player.action = random.choice(['X','Y'])
 
 
 class DecisionWaitPage(BaseWaitPage):
