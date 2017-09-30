@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+
+<p>
+    Here are a number of descriptions that may or may not apply to you.
+    Please indicate the extent to which you agree or disagree with that statement on a scale of 1 (strongly disagree) to
+    7 (strongly agree).
+</p>
+<p>
+    You should rate the extent to which the pair of traits applies to you,
+    even if one characteristic applies more strongly than the other.
+</p>
+
+<hr>
+<div class="container" style="alignment:center">
+    <div class="row">
+        <div class="col-sm-5">
+            I consider my self as...
+        </div>
+        <div class="col-sm-1">
+            Strongly Disagree
+        </div>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-1">
+            Strongly Agree
+        </div>
+    </div>
+    <hr>
+
+    {% for field in form %}
+    <div class="row">
+        <div class="col-sm-5">
+            {{ field.label_tag }}
+        </div>
+        <div class="col-sm-4">
+            {{ field }}
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
+
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+{% endblock %}

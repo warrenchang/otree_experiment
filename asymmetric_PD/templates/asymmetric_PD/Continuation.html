@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block styles %}
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% if player.interaction_number != 0 %}
+<p style="font-size:16px"> Round {{ player.round_in_interaction }} of Match {{ player.interaction_number}} </p>
+{% else %}
+<p style="font-size:16px"> Round {{ player.round_in_interaction }} of Practice Match </p>
+{% endif %}
+
+{% block content %}
+<div style="text-align:center;font-size:16px">
+    <p>
+        The computer randomly generated the number {{ number_generated }}, which is NOT more than 16.
+    </p>
+    <p>
+        You will continue to interact with the same participant for another round.
+    </p>
+</div>
+
+
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+<hr>
+
+{% include Constants.historyall_template %}
+
+{% endblock %}

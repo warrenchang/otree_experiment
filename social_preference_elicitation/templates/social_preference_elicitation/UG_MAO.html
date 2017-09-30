@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+<p style="font-size:16px">
+    Suppose you are the <strong>RESPONDER</strong>.
+    Please indicate the minimum offer that you are willing to accept from the proposer. Note that if the offer from
+    the proposer is less than your minimum offer, both of you receive 0.
+</p>
+
+
+<div class="form-group required" >
+    {% formfield player.UG_MAO with label=""%}
+</div>
+
+
+    {% next_button %}
+
+{% endblock %}
+

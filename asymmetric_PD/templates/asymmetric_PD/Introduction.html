@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block styles %}
+    <style>
+        .otree-timer {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+
+{% if player.interaction_number != 0 %}
+This is the start of Match {{ player.interaction_number}}
+{% else %}
+This is the start of the Practice Match
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}

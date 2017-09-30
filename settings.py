@@ -67,8 +67,8 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 # REAL_WORLD_CURRENCY_CODE = 'USD'
-REAL_WORLD_CURRENCY_CODE = 'AED '
 REAL_WORLD_CURRENCY_CODE = 'RMB '
+REAL_WORLD_CURRENCY_CODE = 'AED '
 USE_POINTS = True
 # POINTS_CUSTOM_NAME = 'tokens'
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 1
@@ -173,11 +173,53 @@ SESSION_CONFIGS = [
     {
         'name': 'in_class_test',
         'display_name': "In class experiment test",
-        'num_demo_participants': 14,
+        'num_demo_participants': 10,
         'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
         'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
                          'repeated_game_randpay','ravens', 'payment_simple'
+                         ],
+    },
+    {
+        'name': 'asymmetric_PD_test',
+        'display_name': "Infinitely repeated asymmetric PD test",
+        'num_demo_participants': 20,
+        'treatment': 'ASYM',
+        # 'debug': False,
+        'real_world_currency_per_point': 1 / 40,
+        'SP_money_per_point': 1,
+        'participation_fee': 30,
+        'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
+        # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
+    },
+    {
+        'name': 'asymmetric_PD_experiment',
+        'display_name': "Infinitely repeated asymmetric PD",
+        'num_demo_participants': 30,
+        'treatment': 'ASYM',
+        # 'debug': False,
+        'real_world_currency_per_point': 1 / 40,
+        'SP_money_per_point': 1,
+        'participation_fee': 30,
+        'app_sequence': ['social_preference_elicitation','asymmetric_PD','survey_asym_PD','survey_likert', 'payment_info_asym_PD'],
+        # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
+    },
+    {
+        'name': 'social_preference_elicitation',
+        'display_name': "Social Preference Elicitation",
+        'num_demo_participants': 4,
+        'real_world_currency_per_point': 1 / 8,
+        'participation_fee': 0,
+        'app_sequence': ['social_preference_elicitation'
+                         ],
+    },
+    {
+        'name': 'big5_questionnaire',
+        'display_name': "Big5 Questionnaire",
+        'num_demo_participants': 1,
+        'real_world_currency_per_point': 1 / 8,
+        'participation_fee': 0,
+        'app_sequence': ['big5_questionnaire'
                          ],
     },
     {

@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+Make your choice
+{% endblock %}
+
+
+{% block content %}
+{% if player.interaction_number != 0 %}
+<p style="font-size:16px"> Round {{ player.round_in_interaction }} of Match {{ player.interaction_number}} </p>
+{% else %}
+<p style="font-size:16px"> Round {{ player.round_in_interaction }} of Practice Match </p>
+{% endif %}
+
+{% include Constants.instructions_template %}
+
+
+<div class="form-group required" style="text-align:center">
+    {% formfield group.action1 with label='You are player A. Please make your decision:' %}
+</div>
+
+
+
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+<br/><br/>
+
+{% include Constants.history_template %}
+
+{% endblock %}

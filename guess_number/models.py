@@ -8,7 +8,7 @@ doc = """
 a.k.a. Keynesian beauty contest.
 
 Players all guess a number; whoever guesses closest to
-2/3 of the average wins.
+p of the average wins.
 
 See https://en.wikipedia.org/wiki/Guess_2/3_of_the_average
 """

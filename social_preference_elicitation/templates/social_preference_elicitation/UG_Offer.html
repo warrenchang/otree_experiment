@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+<p style="font-size:16px">
+    Suppose you are the <strong>PROPOSER</strong>. Please indicate what is the offer you propose
+    to the responder and the amount you keep for yourself. If your offer to the responder is less
+    that the responder's minimum acceptable offer, both of you receive 0.
+</p>
+
+<div class="container" style="alignment:center">
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-4">
+            <b>Offer to the responder</b>  {{ form.UG_offer }}
+        </div>
+        <div class="col-sm-4">
+            <b>Amount kept for yourself</b>  {{ form.UG_kept }}
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+</div>
+
+
+
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+{% endblock %}

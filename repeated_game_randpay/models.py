@@ -7,7 +7,7 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-A series of finitely repeated coordination games.
+A series of finitely repeated coordination games. One round in each game is randomly chosen for payment.
 """
 
 

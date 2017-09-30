@@ -15,7 +15,7 @@ class Constants(BaseConstants):
     name_in_url = 'ravens'
     players_per_group = None
     minutes_given = 10
-    payment_per_question = 0.5
+    payment_per_question = 1
     payment_in_points = 3
     num_rounds = 12
     answer_keys = [4, 2, 2, 1, 2, 7, 3, 5, 2, 5, 6, 4]
@@ -35,6 +35,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    answer = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7,8])
+    answer = models.IntegerField(choices=[1,2,3,4,5,6,7,8])
     ans_correct = models.BooleanField()
 
