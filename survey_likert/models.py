@@ -7,7 +7,7 @@ import random
 author = 'Huanren Zhang'
 
 doc = """
-Questionnaire with emphasis on Big 5 personalities (OCEAN) and consideration of future consequences (CFC)
+Questions that can be measures by a likert scale (1-7).
 """
 
 GENDER_CHOICES = (

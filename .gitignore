@@ -1,5 +1,6 @@
 venv
 *.pyc
+.DS_Store
 staticfiles
 ./db.sqlite3
 .idea
