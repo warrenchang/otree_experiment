@@ -11,4 +11,5 @@ if [ ! -f "/opt/init/.done" ]; then
     && touch /opt/init/.done
 fi
 
-/usr/local/bin/forego start -f /Procfile
+export PYTHONUNBUFFERED=1
+cd /opt/otree && otree runprodserver --port=80

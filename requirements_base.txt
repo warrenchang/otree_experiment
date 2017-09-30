@@ -27,7 +27,7 @@ otree-save-the-change==1.1.3
 packaging==16.8
 pbr==1.10.0
 py==1.4.31
-pyparsing==2.2.0
+pyparsing==2.2.
 pytest==2.9.2
 pytest-django==3.0.0
 python-redis-lock==3.2.0
