@@ -9,7 +9,7 @@ class PlayerBot(Bot):
     def play_round(self):
         num_participants = len(self.subsession.get_players())
         yield(views.Waiting)
-        yield (views.Modified_UG,
+        yield (views.ModifiedUG,
                {
                    "UGchoice0": random.choice([False, True]),
                    "UGchoice1": random.choice([False, True]),
@@ -34,7 +34,7 @@ class PlayerBot(Bot):
                    "UGchoice20": random.choice([False, True]),
                })
         yield(views.Waiting)
-        yield (views.Modified_DG,
+        yield (views.ModifiedDG,
                {
                    "DGchoice0": random.choice([False, True]),
                    "DGchoice1": random.choice([False, True]),
@@ -60,13 +60,13 @@ class PlayerBot(Bot):
                })
         yield(views.Waiting)
         UG_offer = random.choice(range(0,21))
-        yield (views.UG_offer,
+        yield (views.UltimatumMAO,
+               {
+                   "UG_MAO": random.choice(range(0,21)),
+               })
+        yield (views.UltimatumOffer,
                {
                    "UG_offer": UG_offer,
                    "UG_kept": 20 - UG_offer,
 
-               })
-        yield (views.UG_MAO,
-               {
-                   "UG_MAO": random.choice(range(0,21)),
                })
