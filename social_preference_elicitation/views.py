@@ -114,8 +114,8 @@ page_sequence = [
     Waiting,
     Modified_DG,
     Waiting,
-    UG_offer,
-    UG_wait,
     UG_MAO,
+    UG_wait,
+    UG_offer,
     FinalWaitPage,
 ]

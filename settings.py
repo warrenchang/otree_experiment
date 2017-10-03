@@ -228,7 +228,7 @@ SESSION_CONFIGS = [
         'SP_money_per_point': 1,
         'participation_fee': 30,
         'parts_before_PD': 0,
-        'app_sequence': ['asymmetric_PD','social_preference_elicitation'],
+        'app_sequence': ['asymmetric_PD'],
         # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
     },
     {
