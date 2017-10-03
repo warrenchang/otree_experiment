@@ -12,7 +12,7 @@ Games used to estimate parameters of the Fehr-Schmidt model of inequality aversi
 
 
 class Constants(BaseConstants):
-    name_in_url = 'sp_elicitation'
+    name_in_url = 'sp'
     players_per_group = 2
     cluster_size = 10 ## players only interact with those within the same cluster group
     num_rounds = 1
