@@ -21,5 +21,10 @@ This is the start of the Practice Match
 
 {% block content %}
 
+{% if debug_mode %}
+<div style="text-align:right">
+    {% next_button %}
+</div>
+{% endif %}
 
 {% endblock %}

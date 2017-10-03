@@ -6,10 +6,11 @@ import random
 
 
 class Waiting(Page):
-    # timeout_seconds = 30
-    def is_displayed(self):
-        return (not self.session.config['debug'])
-        # return self.round_number == 1
+
+    def vars_for_template(self):
+        return {'debug_mode': self.session.config['debug']}
+
+
 
 class Modified_UG(Page):
     form_model = models.Player
@@ -105,7 +106,6 @@ class FinalWaitPage(WaitPage):
         #it only gets executed once
         self.group.interact()
         print('players have interacted!')
-
 
 
 page_sequence = [

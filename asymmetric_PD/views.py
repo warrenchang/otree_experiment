@@ -7,8 +7,11 @@ import random
 class Waiting(Page):
     # timeout_seconds = 30
     def is_displayed(self):
-        return (self.round_number==1) & (not self.session.config['debug'])
+        return (self.round_number==1)
         # return self.round_number == 1
+
+    def vars_for_template(self):
+        return {'debug_mode': self.session.config['debug']}
 
 
 class BasePage(Page):
@@ -41,11 +44,15 @@ class BaseWaitPage(WaitPage):
 
 class Introduction(BasePage):
     timeout_seconds = 10
+
     def is_displayed(self):
         if self.player.round_in_interaction == 1:
             print('This is the start of new match')
-        return self.player.round_in_interaction == 1 and (not self.session.config['debug'])
+        return self.player.round_in_interaction == 1
         # return self.round_number == 1
+
+    def vars_for_template(self):
+        return {'debug_mode': self.session.config['debug']}
 
 
 class Decision1(BasePage):
@@ -124,8 +131,9 @@ class Belief(BasePage):
             return (self.player.interaction_number == 1) & (self.player.round_in_interaction == 1) & self.session.config['belief_elicitation']
 
     def error_message(self, values):
-        if values["belief1"] + values["belief2"] + values["belief3"] != 10:
-            return 'The numbers must add up to 10.'
+        num_others = int(len(self.subsession.get_players())/2)
+        if values["belief1"] + values["belief2"] + values["belief3"] != num_others:
+            return 'The numbers must add up to %d.'%(num_others)
 
     def extra_vars_for_template(self):
         return {

@@ -7,8 +7,10 @@ Please wait for the experiment to continue.
 
 {% block content %}
 
-<p style="font-size:16px">
- </p>
-
+{% if debug_mode %}
+<div style="text-align:right">
+    {% next_button %}
+</div>
+{% endif %}
 
 {% endblock %}

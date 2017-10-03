@@ -171,6 +171,7 @@ SESSION_CONFIGS = [
         'SP_money_per_point': 1,
         'participation_fee': 30,
         'app_sequence': ['social_preference_elicitation','asymmetric_PD','survey_asym_PD','survey_likert', 'payment_info_asym_PD'],
+        'parts_before_PD': 1,
         # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
     },
     {
@@ -185,6 +186,7 @@ SESSION_CONFIGS = [
         'participation_fee': 30,
         'app_sequence': ['social_preference_elicitation', 'asymmetric_PD', 'survey_asym_PD', 'survey_likert',
                          'payment_info_asym_PD'],
+        'parts_before_PD': 1,
         # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
     },
     {
@@ -198,6 +200,7 @@ SESSION_CONFIGS = [
         'participation_fee': 30,
         'app_sequence': ['social_preference_elicitation', 'asymmetric_PD', 'survey_asym_PD', 'survey_likert',
                          'payment_info_asym_PD'],
+        'parts_before_PD': 1,
         # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
     },
     {
@@ -211,18 +214,21 @@ SESSION_CONFIGS = [
         'participation_fee': 30,
         'app_sequence': ['social_preference_elicitation', 'asymmetric_PD', 'survey_asym_PD', 'survey_likert',
                          'payment_info_asym_PD'],
+        'parts_before_PD': 1,
         # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
     },
     {
-        'name': 'asymmetric_PD_test',
+        'name': 'AsymPD_test',
         'display_name': "Infinitely repeated asymmetric PD test",
         'num_demo_participants': 4,
         'treatment': 'ASYM',
-        'debug': False,
+        'belief_elicitation': True,
+        # 'debug': False,
         'real_world_currency_per_point': 1 / 40,
         'SP_money_per_point': 1,
         'participation_fee': 30,
-        'app_sequence': ['asymmetric_PD'],
+        'parts_before_PD': 0,
+        'app_sequence': ['asymmetric_PD','social_preference_elicitation'],
         # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
     },
     {
