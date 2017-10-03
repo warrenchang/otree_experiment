@@ -18,30 +18,56 @@ class PaymentInfo(Page):
             paying_part = 'Part III'
 
         if participant.vars['role_SP']==1:
-            role_SP = 'Proposer'
+            role_SP = 'Person A (Proposer)'
         else:
-            role_SP = 'Responder'
+            role_SP = 'Person B (Receiver)'
 
         if participant.vars['decision_SP']==0:
             decision_SP = 'Left'
         else:
             decision_SP = 'Right'
 
+        if ('belief_elicitation' in self.session.config):
+            if self.session.config['belief_elicitation']:
+                return {
+                # 'redemption_code': participant.label or participant.code,
+                    'total_payoff': math.ceil(self.participant.payoff_plus_participation_fee()),
+                    'paying_part': paying_part,
+                    'decision_number': self.participant.vars['decision_number'],
+                    'decision_SP': decision_SP,
+                    'UG_MAO': self.participant.vars['UG_MAO'],
+                    'UG_offer': self.participant.vars['UG_offer'],
+                    'role_SP': role_SP,
+                    'payoff_SP': participant.vars['payoff_SP'],
+                    'real_payoff_SP': participant.vars['real_payoff_SP'],
+                    'payoff_PD': participant.vars['payoff_PD'],
+                    'real_payoff_PD': participant.vars['payoff_PD'].to_real_world_currency(self.session),
+                    # 'payoff_ravens': participant.vars['payoff_ravens'],
+                    'real_payoff_guess':participant.vars['real_payoff_guess'],
+                    'belief_elicitation': self.session.config['belief_elicitation'],
+                    'num1': participant.vars['num1'],
+                    'num2': participant.vars['num2'],
+                    'num3': participant.vars['num3'],
+                    'belief1': participant.vars['belief1'],
+                    'belief2': participant.vars['belief2'],
+                    'belief3': participant.vars['belief3'],
+                    'participation_fee': self.session.config['participation_fee']
+                }
         return {
             # 'redemption_code': participant.label or participant.code,
-            'total_payoff': math.ceil(self.participant.payoff_plus_participation_fee()),
-            'paying_part': paying_part,
-            'decision_number': self.participant.vars['decision_number'],
-            'decision_SP': decision_SP,
-            'UG_MAO': self.participant.vars['UG_MAO'],
-            'UG_offer': self.participant.vars['UG_offer'],
-            'role_SP': role_SP,
-            'payoff_SP': participant.vars['payoff_SP'],
-            'real_payoff_SP': participant.vars['real_payoff_SP'],
-            'payoff_PD': participant.vars['payoff_PD'],
-            'real_payoff_PD': participant.vars['payoff_PD'].to_real_world_currency(self.session),
-            # 'payoff_ravens': participant.vars['payoff_ravens'],
-            'participation_fee': self.session.config['participation_fee']
-        }
+                'total_payoff': math.ceil(self.participant.payoff_plus_participation_fee()),
+                'paying_part': paying_part,
+                'decision_number': self.participant.vars['decision_number'],
+                'decision_SP': decision_SP,
+                'UG_MAO': self.participant.vars['UG_MAO'],
+                'UG_offer': self.participant.vars['UG_offer'],
+                'role_SP': role_SP,
+                'payoff_SP': participant.vars['payoff_SP'],
+                'real_payoff_SP': participant.vars['real_payoff_SP'],
+                'payoff_PD': participant.vars['payoff_PD'],
+                'real_payoff_PD': participant.vars['payoff_PD'].to_real_world_currency(self.session),
+                # 'payoff_ravens': participant.vars['payoff_ravens'],
+                'participation_fee': self.session.config['participation_fee']
+            }
 
 page_sequence = [PaymentInfo]

@@ -1,0 +1,106 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+Guess the choices of other participants
+{% endblock %}
+
+{% block content %}
+<p style="font-size:16px">Round {{ player.round_in_interaction }} </p>
+
+{% include Constants.instructions_template %}
+
+<div style="font-size:16px">
+    {% if role == 1 %}
+    <p>
+        You are Player A. There are 10 participants who are in the role of Player B in this room.
+    </p>
+    <p>
+        Now you need to guess the number of B players who choose each of the three choices (L, M, R) in the previous round.
+        For each action, if your guess is correct, you receive AED 2.
+        If your guess is correct for all the three choices, you can receive AED 6.
+    </p>
+
+    <p>
+        Whether your guess is correct or not is only shown at the end of the experiment.
+        Therefore, you will not know your payment for this guess until the end of the experiment.
+        You will not be asked to guess the actions of others again for the rest of this experiment.
+    </p>
+
+    <p>
+        Please indicate your guess below.
+
+    </p>
+
+    <div class="container" style="alignment:center">
+        <div class="row">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-3">
+                <b>L </b>  {{ form.belief1 }}
+            </div>
+            <div class="col-sm-3">
+                <b>M </b>  {{ form.belief2 }}
+            </div>
+            <div class="col-sm-3">
+                <b>R </b>  {{ form.belief3 }}
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <p>
+        You are Player B. There are 10 participants who are in the role of Player A in this room.
+    </p>
+    <p>
+        Now you need to guess the number of A players who choose each of the three choices (U, M, D) in the previous round.
+        For each action, if your guess is correct, you receive AED 2.
+        If your guess is correct for all the three actions, you can receive AED 6.
+    </p>
+    <p>
+        Whether your guess is correct or not is only shown at the end of the experiment.
+        Therefore, you will not know your payment for this guess until the end of the experiment.
+        You will not be asked to guess the choices of others again for the rest of this experiment.
+    </p>
+
+    <p> Please indicate your guess below.
+    </p>
+
+    <div class="container" style="alignment:center">
+        <div class="row">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-3">
+                <b>U </b>  {{ form.belief1 }}
+            </div>
+            <div class="col-sm-3">
+                <b>M </b>  {{ form.belief2 }}
+            </div>
+            <div class="col-sm-3">
+                <b>D </b>  {{ form.belief3 }}
+            </div>
+        </div>
+    </div>
+    {% endif%}
+</div>
+
+
+
+<p></p>
+
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+<br/><br/>
+
+{% include Constants.history_template %}
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<!-- define a script -->
+
+{% endblock %}

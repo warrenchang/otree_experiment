@@ -14,6 +14,7 @@ only interact with those in the same group.
 
 
 class Constants(BaseConstants):
+    prize_per_guess = 2 # payment for each correct guess in real currency
     name_in_url = 'asymmetric_PD'
     players_per_group = 2
     cluster_size = 10 ## players only interact with those within the same cluster group
@@ -35,15 +36,15 @@ class Constants(BaseConstants):
                               1,  2,  3]
     interaction_length = [ 8, 6,  2,  2, 11,  4,  1,  5,  6, 14,  3]
 
-    # number_sequence = [1, 17, 5, 4, 18, 19,]
-    # interactions = [
-    #     0, 0, 1, 1, 1, 2,
-    # ]
-    # round_in_interactions = [
-    #     1, 2, 1, 2, 3, 1,
-    # ]
-    #
-    # interaction_length = [2, 3, 1]
+    number_sequence = [1, 17, 5, 4, 18, 19,]
+    interactions = [
+        0, 0, 1, 1, 1, 2,
+    ]
+    round_in_interactions = [
+        1, 2, 1, 2, 3, 1,
+    ]
+
+    interaction_length = [2, 3, 1]
 
     # interactions = [
     #     1, 1, 1,
@@ -201,6 +202,9 @@ class Player(BasePlayer):
     treatment = models.CharField()
     action = models.CharField()
     other_action = models.CharField()
+    belief1 = models.IntegerField()
+    belief2 = models.IntegerField()
+    belief3 = models.IntegerField()
 
     partner_id = models.PositiveIntegerField()
     potential_payoff = models.CurrencyField()
