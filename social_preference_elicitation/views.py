@@ -74,7 +74,7 @@ class Modified_DG(Page):
             self.player.DGchoice20 = random.choice([0, 1])
 
 
-class UG_offer(Page):
+class Ultimatum_offer(Page):
     form_model = models.Player
     form_fields = ['UG_offer','UG_kept']
 
@@ -93,12 +93,14 @@ class UG_wait(WaitPage):
     pass
 
 
-class UG_MAO(Page):
+class Ultimatum_MAO(Page):
     form_model = models.Player
     form_fields = ['UG_MAO']
+
     def before_next_page(self):
         if self.timeout_happened:
             self.player.UG_MAO = round(random.random()*20)
+
 
 class FinalWaitPage(WaitPage):
     # timeout_seconds = 30
@@ -114,8 +116,8 @@ page_sequence = [
     Waiting,
     Modified_DG,
     Waiting,
-    UG_offer,
+    Ultimatum_offer,
     UG_wait,
-    UG_MAO,
+    Ultimatum_MAO,
     FinalWaitPage,
 ]
