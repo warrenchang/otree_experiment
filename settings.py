@@ -234,12 +234,11 @@ SESSION_CONFIGS = [
     {
         'name': 'social_preference_elicitation',
         'display_name': "Social Preference Elicitation",
-        'num_demo_participants': 4,
+        'num_demo_participants': 6,
         'real_world_currency_per_point': 1 / 8,
         'SP_money_per_point': 1,
         'participation_fee': 0,
-        'app_sequence': ['social_preference'
-                         ],
+        'app_sequence': ['social_preference' ],
     },
     {
         'name': 'social_preference_elicitation0',
