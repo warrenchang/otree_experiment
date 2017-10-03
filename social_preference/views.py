@@ -74,7 +74,7 @@ class Modified_DG(Page):
             self.player.DGchoice20 = random.choice([0, 1])
 
 
-class Ultimatum_offer(Page):
+class UltimatumOffer(Page):
     form_model = models.Player
     form_fields = ['UG_offer','UG_kept']
 
@@ -93,7 +93,7 @@ class UG_wait(WaitPage):
     pass
 
 
-class Ultimatum_MAO(Page):
+class UltimatumMAO(Page):
     form_model = models.Player
     form_fields = ['UG_MAO']
 
@@ -116,8 +116,8 @@ page_sequence = [
     Waiting,
     Modified_DG,
     Waiting,
-    Ultimatum_offer,
+    UltimatumOffer,
     UG_wait,
-    Ultimatum_MAO,
+    UltimatumMAO,
     FinalWaitPage,
 ]
