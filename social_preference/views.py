@@ -12,7 +12,7 @@ class Waiting(Page):
 
 
 
-class Modified_UG(Page):
+class ModifiedUG(Page):
     form_model = models.Player
     form_fields = ['UGchoice{}'.format(i) for i in range(0, 21)]
     def vars_for_template(self):
@@ -43,7 +43,7 @@ class Modified_UG(Page):
             self.player.UGchoice20 = random.choice([0, 1])
 
 
-class Modified_DG(Page):
+class ModifiedDG(Page):
     form_model = models.Player
     form_fields = ['DGchoice{}'.format(i) for i in range(0, 21)]
     def vars_for_template(self):
@@ -112,12 +112,12 @@ class FinalWaitPage(WaitPage):
 
 page_sequence = [
     Waiting,
-    Modified_UG,
+    ModifiedUG,
     Waiting,
-    Modified_DG,
+    ModifiedDG,
     Waiting,
-    UltimatumOffer,
-    UG_wait,
     UltimatumMAO,
+    UG_wait,
+    UltimatumOffer,
     FinalWaitPage,
 ]

@@ -234,21 +234,11 @@ SESSION_CONFIGS = [
     {
         'name': 'social_preference_elicitation',
         'display_name': "Social Preference Elicitation",
-        'num_demo_participants': 6,
-        'real_world_currency_per_point': 1 / 8,
-        'SP_money_per_point': 1,
-        'participation_fee': 0,
-        'app_sequence': ['social_preference' ],
-    },
-    {
-        'name': 'social_preference_elicitation0',
-        'display_name': "Social Preference Elicitation0",
         'num_demo_participants': 4,
         'real_world_currency_per_point': 1 / 8,
         'SP_money_per_point': 1,
         'participation_fee': 0,
-        'app_sequence': ['social_preference_elicitation0'
-                         ],
+        'app_sequence': ['social_preference' ],
     },
     {
         'name': 'big5_questionnaire',
@@ -336,20 +326,6 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'debug': DEBUG,
         'app_sequence': ['big5_questionnaire'],
-    },
-    {
-        'name': 'payment_info',
-        'display_name': "Payment information",
-        'num_demo_participants': 1,
-        'debug': DEBUG,
-        'app_sequence': ['payment_simple'],
-    },
-    {
-        'name': 'my_survey',
-        'display_name': "Survey questions",
-        'num_demo_participants': 1,
-        'debug': DEBUG,
-        'app_sequence': ['my_survey'],
     },
     {
         'name': 'bret',
