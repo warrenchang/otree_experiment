@@ -238,6 +238,16 @@ SESSION_CONFIGS = [
         'real_world_currency_per_point': 1 / 8,
         'SP_money_per_point': 1,
         'participation_fee': 0,
+        'app_sequence': ['social_preference_elicitation'
+                         ],
+    },
+    {
+        'name': 'social_preference_elicitation0',
+        'display_name': "Social Preference Elicitation0",
+        'num_demo_participants': 4,
+        'real_world_currency_per_point': 1 / 8,
+        'SP_money_per_point': 1,
+        'participation_fee': 0,
         'app_sequence': ['social_preference_elicitation0'
                          ],
     },
