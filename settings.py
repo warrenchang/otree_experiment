@@ -238,7 +238,7 @@ SESSION_CONFIGS = [
         'real_world_currency_per_point': 1 / 8,
         'SP_money_per_point': 1,
         'participation_fee': 0,
-        'app_sequence': ['social_preference_elicitation'
+        'app_sequence': ['social_preference'
                          ],
     },
     {
