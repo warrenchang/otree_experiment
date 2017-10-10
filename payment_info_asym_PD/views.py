@@ -70,4 +70,18 @@ class PaymentInfo(Page):
                 'participation_fee': self.session.config['participation_fee']
             }
 
+
+    def before_next_page(self):
+        self.player.real_payoff_PD = self.participant.vars['payoff_PD'].to_real_world_currency(self.session)
+        self.player.real_payoff_guess = self.participant.vars['real_payoff_guess']
+        self.player.real_payoff_SP = self.participant.vars['real_payoff_SP']
+        self.player.participation_fee = self.session.config['participation_fee']
+        self.player.role_SP = self.participant.vars['role_SP']
+        self.player.decision_SP = self.participant.vars['decision_SP']
+        self.player.paying_part = self.participant.vars['paying_game']
+        self.player.decision_number = self.participant.vars['decision_number']
+        self.player.UG_MAO = self.participant.vars['UG_MAO']
+        self.player.UG_offer = self.participant.vars['UG_offer']
+
+
 page_sequence = [PaymentInfo]
