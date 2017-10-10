@@ -36,6 +36,7 @@ class Subsession(BaseSubsession):
         # note that players are only matched to those within the same group of 10, so we only
         # shuffle within the same group
         matrix = self.get_group_matrix()
+        print(matrix)
         num_clusters = int(math.ceil(len(matrix)*2/Constants.cluster_size))
         flattened = [item for sublist in matrix for item in sublist]
         for i in range(num_clusters):
@@ -48,6 +49,7 @@ class Subsession(BaseSubsession):
                 random.shuffle(l)
                 flattened[i * Constants.cluster_size:] = l
         matrix = list(map(list, zip(*[iter(flattened)] * 2)))
+        print(matrix)
         self.set_group_matrix(matrix)
 
 

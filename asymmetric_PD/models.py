@@ -36,15 +36,18 @@ class Constants(BaseConstants):
                               1,  2,  3]
     interaction_length = [ 6,  2,  2, 11,  4,  1,  5,  6, 14,  3]
 
-    number_sequence = [1, 17, 5, 4, 18, 19,]
-    interactions = [
-        1, 1, 2, 2, 2, 3,
-    ]
-    round_in_interactions = [
-        1, 2, 1, 2, 3, 1,
-    ]
 
-    interaction_length = [2, 3, 1]
+    # # parameter values for testing purpose, comment these for real experiment
+    # number_sequence = [1, 17, 5, 4, 18, 19,]
+    # interactions = [
+    #     1, 1, 2, 2, 2, 3,
+    # ]
+    # round_in_interactions = [
+    #     1, 2, 1, 2, 3, 1,
+    # ]
+    #
+    # interaction_length = [2, 3, 1]
+    # # parameter values for testing purpose, comment these for real experiment
 
     # interactions = [
     #     1, 1, 1,
