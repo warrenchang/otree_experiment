@@ -28,7 +28,7 @@ class PaymentInfo(Page):
             decision_SP = 'Right'
 
         if ('belief_round' in self.session.config):
-            if self.session.config['belief_round']>0:
+            if self.session.config['belief_round']>0: # when there is belief elicitation
                 return {
                 # 'redemption_code': participant.label or participant.code,
                     'total_payoff': math.ceil(self.participant.payoff_plus_participation_fee()),

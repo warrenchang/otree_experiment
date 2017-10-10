@@ -166,7 +166,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'treatment': 'ASYM',
         'belief_round' : 1,
-        'debug': False,
+        # 'debug': False,
         'real_world_currency_per_point': 1 / 400,
         'SP_money_per_point': 1,
         'participation_fee': 30,
