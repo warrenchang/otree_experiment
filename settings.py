@@ -162,7 +162,7 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
         'name': 'AsymPD_ASYM_belief1',
-        'display_name': "Repeated asymmetric PD, asymmetric treatment with belief elicitation at Round 1 of Match 1",
+        'display_name': "AsymPD, Asymmetric, belief elicitation at Round 1 of Match 1",
         'num_demo_participants': 4,
         'treatment': 'ASYM',
         'belief_round' : 1,
@@ -177,7 +177,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'AsymPD_SYM_belief1',
-        'display_name': "Repeated asymmetric PD, symmetric treatment with belief elicitation at Round 1 of Match 1",
+        'display_name': "AsymPD, Symmetric, belief elicitation at Round 1 of Match 1",
         'num_demo_participants': 4,
         'treatment': 'SYM',
         'belief_round' : 1,
@@ -192,7 +192,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'AsymPD_ASYM_belief2',
-        'display_name': "Repeated asymmetric PD, asymmetric treatment with belief elicitation at Round 2 of Match 1",
+        'display_name': "AsymPD, Asymmetric, belief elicitation at Round 2 of Match 1",
         'num_demo_participants': 4,
         'treatment': 'ASYM',
         # 'debug': False,
@@ -207,7 +207,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'AsymPD_SYM_belief2',
-        'display_name': "Repeated asymmetric PD, symmetric treatment with belief elicitation at Round 2 of Match 1",
+        'display_name': "AsymPD, Symmetric, belief elicitation at Round 2 of Match 1",
         'num_demo_participants': 4,
         'treatment': 'SYM',
         # 'debug': False,
