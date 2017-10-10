@@ -220,7 +220,10 @@ class Continuation(BasePage):
     def is_displayed(self):
         print('Continuation: player.round_number %d, subsession.round_number %d, interaction_number %d, round_in_interaction %d'%(
             self.player.round_number,self.subsession.round_number,self.player.interaction_number,self.player.round_in_interaction ))
-        return self.player.round_in_interaction != Constants.interaction_length[self.player.interaction_number]
+        if Constants.interactions[0] == 0: ## when there is practice interaction
+            return self.player.round_in_interaction != Constants.interaction_length[self.player.interaction_number]
+        else:
+            return self.player.round_in_interaction != Constants.interaction_length[self.player.interaction_number-1]
 
     def extra_vars_for_template(self):
         return {
@@ -234,7 +237,10 @@ class InteractionResults(BasePage):
     def is_displayed(self):
         print('InteractionResults: player.round_number %d, subsession.round_number %d, interaction_number %d, round_in_interaction %d'%(
             self.player.round_number,self.subsession.round_number,self.player.interaction_number,self.player.round_in_interaction ))
-        return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number]
+        if Constants.interactions[0] == 0: ## when there is practice interaction
+            return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number]
+        else:
+            return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number-1]
 
     def extra_vars_for_template(self):
         return {
@@ -247,7 +253,10 @@ class InteractionWaitPage(BaseWaitPage):
     wait_for_all_groups = True
 
     def is_displayed(self):
-        return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number]
+        if Constants.interactions[0] == 0: ## when there is practice interaction
+            return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number]
+        else:
+            return self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number-1]
 
     def after_all_players_arrive(self):
         if self.round_number == Constants.num_rounds:

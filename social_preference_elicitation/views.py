@@ -116,8 +116,8 @@ page_sequence = [
     Waiting,
     ModifiedDG,
     Waiting,
-    UltimatumMAO,
-    UG_wait,
     UltimatumOffer,
+    UG_wait,
+    UltimatumMAO,
     FinalWaitPage,
 ]

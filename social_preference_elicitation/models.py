@@ -91,12 +91,12 @@ class Group(BaseGroup):
                 p1.payoff = p1.UG_kept
                 p2.payoff = p1.UG_offer
 
-        p1.payoff = p1.payoff / self.session.config['real_world_currency_per_point']* self.session.config['SP_money_per_point']
-        p2.payoff = p2.payoff / self.session.config['real_world_currency_per_point'] * self.session.config['SP_money_per_point']
+        p1.participant.vars['payoff_SP_in_points'] = p1.payoff
+        p2.participant.vars['payoff_SP_in_points'] = p2.payoff
+        p1.payoff = p1.payoff * self.session.config['SP_money_per_point'] / self.session.config['real_world_currency_per_point']
+        p2.payoff = p2.payoff * self.session.config['SP_money_per_point'] / self.session.config['real_world_currency_per_point']
         p1.participant.vars['decision_SP'] = p1.decision
         p2.participant.vars['decision_SP'] = p1.decision
-        p1.participant.vars['payoff_SP'] = p1.payoff
-        p2.participant.vars['payoff_SP'] = p2.payoff
         p1.participant.vars['role_SP'] = p1.id_in_group
         p2.participant.vars['role_SP'] = p2.id_in_group
         p1.participant.vars['real_payoff_SP'] = p1.payoff.to_real_world_currency(self.session)

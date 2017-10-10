@@ -65,7 +65,7 @@ class Page3(Page):
 
 
 page_sequence = [
-    StartPage,
+    # StartPage,
     # Page0,
     Page1,
     Page2,

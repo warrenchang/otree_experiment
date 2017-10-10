@@ -27,8 +27,8 @@ class PaymentInfo(Page):
         else:
             decision_SP = 'Right'
 
-        if ('belief_elicitation' in self.session.config):
-            if self.session.config['belief_elicitation']:
+        if ('belief_round' in self.session.config):
+            if self.session.config['belief_round']>0:
                 return {
                 # 'redemption_code': participant.label or participant.code,
                     'total_payoff': math.ceil(self.participant.payoff_plus_participation_fee()),
@@ -38,13 +38,13 @@ class PaymentInfo(Page):
                     'UG_MAO': self.participant.vars['UG_MAO'],
                     'UG_offer': self.participant.vars['UG_offer'],
                     'role_SP': role_SP,
-                    'payoff_SP': participant.vars['payoff_SP'],
+                    'payoff_SP': participant.vars['payoff_SP_in_points'],
                     'real_payoff_SP': participant.vars['real_payoff_SP'],
                     'payoff_PD': participant.vars['payoff_PD'],
                     'real_payoff_PD': participant.vars['payoff_PD'].to_real_world_currency(self.session),
                     # 'payoff_ravens': participant.vars['payoff_ravens'],
                     'real_payoff_guess':participant.vars['real_payoff_guess'],
-                    'belief_elicitation': self.session.config['belief_elicitation'],
+                    'belief_round': self.session.config['belief_round'],
                     'num1': participant.vars['num1'],
                     'num2': participant.vars['num2'],
                     'num3': participant.vars['num3'],
@@ -62,7 +62,7 @@ class PaymentInfo(Page):
                 'UG_MAO': self.participant.vars['UG_MAO'],
                 'UG_offer': self.participant.vars['UG_offer'],
                 'role_SP': role_SP,
-                'payoff_SP': participant.vars['payoff_SP'],
+                'payoff_SP': participant.vars['payoff_SP_in_points'],
                 'real_payoff_SP': participant.vars['real_payoff_SP'],
                 'payoff_PD': participant.vars['payoff_PD'],
                 'real_payoff_PD': participant.vars['payoff_PD'].to_real_world_currency(self.session),

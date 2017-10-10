@@ -32,10 +32,22 @@ class PlayerBot(Bot):
         # num_previous_parts =  self.session.config['parts_before_PD']
         # round_in_interaction = Constants.round_in_interactions[self.player.round_number-1 - num_previous_parts]
         # interaction_number = Constants.interactions[self.player.round_number-1 - num_previous_parts]
-        round_in_interaction = Constants.round_in_interactions[self.player.round_number-1]
-        interaction_number = Constants.interactions[self.player.round_number-1]
-        if round_in_interaction == Constants.interaction_length[interaction_number]:
-            yield (views.InteractionResults)
+
+        if Constants.interactions[0] == 0: ## when there is practice interaction
+            if self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number]:
+                yield (views.InteractionResults)
+            else:
+                yield (views.Continuation)
         else:
-            yield (views.Continuation)
+            if self.player.round_in_interaction == Constants.interaction_length[self.player.interaction_number-1]:
+                yield (views.InteractionResults)
+            else:
+                yield (views.Continuation)
+
+        # round_in_interaction = Constants.round_in_interactions[self.player.round_number-1]
+        # interaction_number = Constants.interactions[self.player.round_number-1]
+        # if round_in_interaction == Constants.interaction_length[interaction_number]:
+        #     yield (views.InteractionResults)
+        # else:
+        #     yield (views.Continuation)
 

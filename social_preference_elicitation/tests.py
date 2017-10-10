@@ -60,13 +60,13 @@ class PlayerBot(Bot):
                })
         yield(views.Waiting)
         UG_offer = random.choice(range(0,21))
-        yield (views.UltimatumMAO,
-               {
-                   "UG_MAO": random.choice(range(0,21)),
-               })
         yield (views.UltimatumOffer,
                {
                    "UG_offer": UG_offer,
                    "UG_kept": 20 - UG_offer,
 
+               })
+        yield (views.UltimatumMAO,
+               {
+                   "UG_MAO": random.choice(range(0,21)),
                })

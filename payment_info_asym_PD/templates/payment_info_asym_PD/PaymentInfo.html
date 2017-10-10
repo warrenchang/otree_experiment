@@ -24,7 +24,7 @@
             <tr><td style="font-size:14px">Earnings in points:</td><td style="font-size:14px">({{ payoff_SP }})</td></tr>
             <tr><td>Part IV earnings:</td><td>{{ real_payoff_PD}}</td></tr>
             <tr><td style="font-size:14px">Part IV earnings in points:</td><td style="font-size:14px">({{ payoff_PD }})</td></tr>
-            {% if belief_elicitation %}
+            {% if belief_round > 0 %}
             <tr><td>Earnings from guessing actions:</td><td>{{ real_payoff_guess}}</td></tr>
             <tr><td style="font-size:14px">Actual number of each choice:</td><td style="font-size:14px">({{num1}},{{num2}},{{num3}})</td></tr>
             <tr><td style="font-size:14px">Your guess:</td><td style="font-size:14px">({{belief1}},{{belief2}},{{belief3}})</td></tr>
@@ -44,8 +44,7 @@
             <tr><td>Part IV earnings:</td><td>{{ real_payoff_PD}}</td></tr>
             <tr><td style="font-size:14px">Part IV earnings in points:</td><td style="font-size:14px">({{ payoff_PD }})</td></tr>
 
-
-            {% if belief_elicitation %}
+            {% if belief_round > 0 %}
             <tr><td>Earnings from guessing choices of other participants:</td><td> AED {{ real_payoff_guess}}</td></tr>
             <tr><td style="font-size:14px">Actual number of each choice:</td><td style="font-size:14px">({{num1}},{{num2}},{{num3}})</td></tr>
             <tr><td style="font-size:14px">Your guesses:</td><td style="font-size:14px">({{belief1}},{{belief2}},{{belief3}})</td></tr>
