@@ -113,10 +113,10 @@ class BeliefStartPage(WaitPage):
     wait_for_all_groups = True
 
     def is_displayed(self):
-        if not ('belief_elicitation' in self.session.config):
+        if not ('belief_round' in self.session.config):
             return False
         else:
-            return (self.player.interaction_number == 1) & (self.player.round_in_interaction == 1) & self.session.config['belief_elicitation']
+            return (self.player.interaction_number == 1) & (self.player.round_in_interaction == self.session.config['belief_round'])
 
 
 class Belief(BasePage):
@@ -125,10 +125,10 @@ class Belief(BasePage):
     form_fields = ['belief1','belief2','belief3']
 
     def is_displayed(self):
-        if not ('belief_elicitation' in self.session.config):
+        if not ('belief_round' in self.session.config):
             return False
         else:
-            return (self.player.interaction_number == 1) & (self.player.round_in_interaction == 1) & self.session.config['belief_elicitation']
+            return (self.player.interaction_number == 1) & (self.player.round_in_interaction == self.session.config['belief_round'])
 
     def error_message(self, values):
         num_others = int(len(self.subsession.get_players())/2)
@@ -136,7 +136,9 @@ class Belief(BasePage):
             return 'The numbers must add up to %d.'%(num_others)
 
     def extra_vars_for_template(self):
+        num_others = int(len(self.subsession.get_players())/2)
         return {
+            'num_others': num_others,
             'role': self.player.id_in_group,
         }
 
@@ -157,11 +159,10 @@ class BeliefWaitPage(WaitPage):
     wait_for_all_groups = True
 
     def is_displayed(self):
-        if not ('belief_elicitation' in self.session.config):
+        if not ('belief_round' in self.session.config):
             return False
         else:
-            return (self.player.interaction_number == 1) & (self.player.round_in_interaction == 1) & self.session.config[
-                'belief_elicitation']
+            return (self.player.interaction_number == 1) & (self.player.round_in_interaction == self.session.config['belief_round'])
 
     def after_all_players_arrive(self):
         players = self.subsession.get_players()
@@ -254,8 +255,8 @@ class InteractionWaitPage(BaseWaitPage):
                 p.participant.vars['payoff_PD'] = sum([this_player.payoff for this_player in p.in_all_rounds()])
                 p.participant.vars['real_payoff_PD'] = (p.participant.vars['payoff_PD']
                                                        * self.session.config['real_world_currency_per_point'])
-                if ('belief_elicitation' in self.session.config):
-                    if self.session.config['belief_elicitation']:
+                if ('belief_round' in self.session.config):
+                    if self.session.config['belief_round']:
                         p.payoff += (p.participant.vars['real_payoff_guess']
                                  / self.session.config['real_world_currency_per_point'])
 

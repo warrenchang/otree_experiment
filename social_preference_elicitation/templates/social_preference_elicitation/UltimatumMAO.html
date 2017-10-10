@@ -1,6 +1,14 @@
 {% extends "global/Page.html" %}
 {% load staticfiles otree_tags %}
 
+{% block app_styles %}
+<style>
+    div {
+    margin: auto;
+}
+</style>
+{% endblock %}
+
 {% block title %}
 {% endblock %}
 
@@ -12,12 +20,12 @@
     the proposer is less than your minimum offer, both of you receive 0.
 </p>
 
-    <div class="form-group required" >
+<div class="form-group required" >
     {% formfield player.UG_MAO with label=""%}
-    </div>
+</div>
 
 
-    {% next_button %}
+{% next_button %}
 
 {% endblock %}
 

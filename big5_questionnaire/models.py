@@ -10,11 +10,6 @@ doc = """
 Questionnaire with emphasis on Big 5 personalities (OCEAN) and consideration of future consequences (CFC)
 """
 
-GENDER_CHOICES = (
-    ('female', 'Female'),
-    ('male', 'Male'),
-    # ('no_answer', 'Prefer not to answer'),
-)
 
 class Constants(BaseConstants):
     name_in_url = 'survey'

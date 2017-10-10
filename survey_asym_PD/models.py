@@ -112,7 +112,7 @@ SURVEY_DEFINITIONS = (
         'page_title': 'Survey Questions - Page 4',
         'survey_fields': [
             ('strategy', {  # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'Describe your strategy for Part IV: How did you make the choice?',
+                'text': 'Describe your strategy for Part IV: How did you make the choice? (You can refer to the instructions for Part IV.)',
             # survey question
                 'field': models.TextField(),
             }),

@@ -19,22 +19,22 @@ class Constants(BaseConstants):
     players_per_group = 2
     cluster_size = 10 ## players only interact with those within the same cluster group
 
-    number_sequence = [1,  9,  5,  4,  2, 19,
+    number_sequence = [ 9,  5,  4,  2, 19,
                        10, 14,  8,  8, 12, 20, 14, 20,  4, 18, 15,  5,  9,  6, 11,  2,  4,
                        16,  1, 11, 20,  5,  5,  1, 18, 20, 11, 11, 15,  7, 20, 13, 11, 15,
                        10, 12, 17,  7, 11,  4,  1, 12,  9,  2,  7,  5,  7,  1,  5, 12, 20,
                        13, 10, 20]
-    interactions = [ 0, 0, 0, 0, 0, 0,
+    interactions = [ 0, 0, 0, 0, 0,
                      1,  1,  1,  1,  1,  1,  2,  2,  3,  3,  4,  4,  4,  4,  4,  4,  4,
                      4,  4,  4,  4,  5,  5,  5,  5,  6,  7,  7,  7,  7,  7,  8,  8,  8,
                      8,  8,  8,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,
                      10, 10, 10]
-    round_in_interactions = [ 1, 2, 3, 4, 5, 6,
+    round_in_interactions = [ 1, 2, 3, 4, 5,
                               1,  2,  3,  4,  5,  6,  1,  2,  1,  2,  1,  2,  3,  4,  5,  6,  7,
                               8,  9, 10, 11,  1,  2,  3,  4,  1,  1,  2,  3,  4,  5,  1,  2,  3,
                               4,  5,  6,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14,
                               1,  2,  3]
-    interaction_length = [ 6, 6,  2,  2, 11,  4,  1,  5,  6, 14,  3]
+    interaction_length = [ 5, 6,  2,  2, 11,  4,  1,  5,  6, 14,  3]
 
     # number_sequence = [1, 17, 5, 4, 18, 19,]
     # interactions = [
@@ -59,13 +59,13 @@ class Constants(BaseConstants):
     # interaction_length = [3, 3, 3]
 
     num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
-    P11 = 60;  P12 = 30; P13 = 0
-    P21 = 80;  P22 = 48; P23 = 15
-    P31 = 100; P32 = 65; P33 = 30
+    P11 = 600;  P12 = 300; P13 = 0
+    P21 = 800;  P22 = 475; P23 = 150
+    P31 = 1000; P32 = 650; P33 = 300
 
-    P11a = 90;  P12a = 45; P13a = 0
-    P21a = 95;  P22a = 55; P23a = 15
-    P31a = 100; P32a = 65; P33a = 30
+    P11a = 900;  P12a = 450; P13a = 0
+    P21a = 950;  P22a = 550; P23a = 150
+    P31a = 1000; P32a = 650; P33a = 300
 
     payoff_matrix = {
         'ASYM': {

@@ -6,14 +6,18 @@ Guess the choices of other participants
 {% endblock %}
 
 {% block content %}
-<p style="font-size:16px">Round {{ player.round_in_interaction }} </p>
+{% if player.interaction_number != 0 %}
+<p style="font-size:16px"> Round {{ player.round_in_interaction }} of Match {{ player.interaction_number}} </p>
+{% else %}
+<p style="font-size:16px"> Round {{ player.round_in_interaction }} of Practice Match </p>
+{% endif %}
 
 {% include Constants.instructions_template %}
 
 <div style="font-size:16px">
     {% if role == 1 %}
     <p>
-        You are Player A. There are 10 participants who are in the role of Player B in this room.
+        You are Player A. There are {{ num_others}} participants who are in the role of Player B in this room.
     </p>
     <p>
         Now you need to guess the number of B players who choose each of the three choices (L, M, R) in the previous round.
@@ -50,7 +54,7 @@ Guess the choices of other participants
 
     {% else %}
     <p>
-        You are Player B. There are 10 participants who are in the role of Player A in this room.
+        You are Player B. There are {{ num_others }} participants who are in the role of Player A in this room.
     </p>
     <p>
         Now you need to guess the number of A players who choose each of the three choices (U, M, D) in the previous round.

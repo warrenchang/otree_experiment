@@ -56,3 +56,24 @@ class Player(BasePlayer):
     Q8 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7], widget=widgets.RadioSelectHorizontal(),
                                      verbose_name= "In general, I am happy if the spending money of another individual increases, as long as they do not have more spending money than I do and my spending money does not decrease."
                                      )
+
+    CFC1 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="My behavior is only influenced by the immediate (i.e., a matter of days or weeks) outcomes of my actions"
+                                       )
+    CFC2 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="I think that sacrificing now is usually unnecessary since future outcomes can be dealt with at a later time."
+                                       )
+    CFC3 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="I only act to satisfy immediate concerns, figuring that I will take care of future problems that may occur at a later date."
+                                       )
+    CFC4 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Since my day to day work has specific outcomes, it is more important to me than behavior that has distant outcomes."
+                                       )
+    CFC5 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="When I make a decision, I think about how it might affect me in the future."
+                                       )

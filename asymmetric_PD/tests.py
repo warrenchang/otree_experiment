@@ -18,8 +18,8 @@ class PlayerBot(Bot):
         print('Test: player.round_number %d, subsession.round_number %d, interaction_number %d, round_in_interaction %d'%(
             self.player.round_number,self.subsession.round_number,self.player.interaction_number,self.player.round_in_interaction ))
 
-        if ('belief_elicitation' in self.session.config):
-            if (self.player.interaction_number == 1) & (self.player.round_in_interaction == 1) & self.session.config['belief_elicitation']:
+        if ('belief_round' in self.session.config):
+            if (self.player.interaction_number == 1) & (self.player.round_in_interaction == self.session.config['belief_round']):
                 print('Now at belief elicitation')
                 num_players = len(self.subsession.get_players())
                 a1 = round(random.random() * int(num_players / 2))
