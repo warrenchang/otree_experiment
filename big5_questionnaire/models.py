@@ -51,6 +51,7 @@ class Player(BasePlayer):
     Q8 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7], widget=widgets.RadioSelectHorizontal(),
                                      verbose_name= "In general, I am happy if the spending money of another individual increases, as long as they do not have more spending money than I do and my spending money does not decrease."
                                      )
+    
     OCEAN1 = models.PositiveIntegerField(choices=[1,2,3,4,5,6,7], widget=widgets.RadioSelectHorizontal(),
                                          verbose_name="Extraverted, enthusiastic"
                                          )

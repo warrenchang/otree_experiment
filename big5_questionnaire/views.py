@@ -14,7 +14,7 @@ class StartPage(Page):
 #         if self.timeout_happened:
 #             self.player.gender = random.choice(['male','female'])
 
-class Page1(Page):
+class Questions(Page):
     form_model = models.Player
     form_fields = ['Q{}'.format(i) for i in range(1, 9)]
 
@@ -30,7 +30,20 @@ class Page1(Page):
             self.player.Q8 = random.choice(range(1,8))
 
 
-class Page2(Page):
+class CFC(Page):
+    form_model = models.Player
+    form_fields = ['CFC{}'.format(i) for i in range(1,6)]
+
+    def before_next_page(self):
+        if self.timeout_happened:
+            self.player.CFC1 = random.choice(range(1,8))
+            self.player.CFC2 = random.choice(range(1,8))
+            self.player.CFC3 = random.choice(range(1,8))
+            self.player.CFC4 = random.choice(range(1,8))
+            self.player.CFC5 = random.choice(range(1,8))
+
+
+class OCEAN(Page):
     form_model = models.Player
     form_fields = ['OCEAN{}'.format(i) for i in range(1, 11)]
 
@@ -48,17 +61,6 @@ class Page2(Page):
             self.player.OCEAN10 = random.choice(range(1,8))
 
 
-class Page3(Page):
-    form_model = models.Player
-    form_fields = ['CFC{}'.format(i) for i in range(1,6)]
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.player.CFC1 = random.choice(range(1,8))
-            self.player.CFC2 = random.choice(range(1,8))
-            self.player.CFC3 = random.choice(range(1,8))
-            self.player.CFC4 = random.choice(range(1,8))
-            self.player.CFC5 = random.choice(range(1,8))
 
 
 
@@ -67,7 +69,7 @@ class Page3(Page):
 page_sequence = [
     # StartPage,
     # Page0,
-    Page1,
-    Page2,
-    Page3,
+    Questions,
+    CFC,
+    OCEAN,
 ]
