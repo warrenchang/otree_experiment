@@ -112,16 +112,10 @@ SURVEY_DEFINITIONS = (
         'page_title': 'Survey Questions - Page 4',
         'survey_fields': [
             ('strategy', {  # field name (which will also end up in your "Player" class and hence in your output data)
-                'text': 'Describe your strategy for Part IV: How did you make your choice? (You can refer to the instructions for Part IV.)',
+                'text': 'Describe your strategy for Part IV: How did you make your choice? How your strategy evolved over time? (You can refer to the instructions for Part IV.)',
             # survey question
                 'field': models.TextField(),
             }),
-            ('strategy_again',
-             {  # field name (which will also end up in your "Player" class and hence in your output data)
-                 'text': 'What would you do differently if you can do Part IV again?',
-                 'field': models.TextField(),
-             }),
-
         ]
     },
     {
