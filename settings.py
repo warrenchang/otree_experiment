@@ -161,7 +161,7 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'Just test',
+        'name': 'just_test',
         'display_name': "just test",
         'num_demo_participants': 4,
         'treatment': 'ASYM',
