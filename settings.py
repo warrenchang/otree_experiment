@@ -161,6 +161,21 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'Just test',
+        'display_name': "just test",
+        'num_demo_participants': 4,
+        'treatment': 'ASYM',
+        'belief_round': 1,
+        # 'debug': False,
+        'real_world_currency_per_point': 1 / 400,
+        'SP_money_per_point': 1,
+        'participation_fee': 30,
+        'app_sequence': ['social_preference_elicitation', 'asymmetric_PD', 'survey_asym_PD', 'big5_questionnaire',
+                         'payment_info_asym_PD'],
+        'parts_before_PD': 1,
+        # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
+    },
+    {
         'name': 'AsymPD_ASYM_belief1',
         'display_name': "AsymPD, Asymmetric, belief elicitation at Round 1 of Match 1",
         'num_demo_participants': 4,
