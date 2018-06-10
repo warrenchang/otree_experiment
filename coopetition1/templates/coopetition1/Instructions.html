@@ -1,0 +1,100 @@
+{% load otree_tags staticfiles %}
+
+
+<div class="instructions well well-lg">
+
+    <p>
+        There will be 10 rounds of decision-making.
+        One of the 10 rounds will be randomly selected by the computer to determine your payment.
+    </p>
+
+    <p>
+        <strong>
+        {% if player.matching == 'random' %}
+        At the start of each round, you will be randomly matched with one participant.
+        {% endif %}
+
+        {% if player.matching == 'fixed' %}
+        At the start of this part, you are randomly matched with one participant.
+        You will play with the same participant for all 10 rounds.
+        {% endif %}
+        </strong>
+    </p>
+
+    {% if player.symmetric == 1 %}
+    <p>
+        In each round, you and the other participant each have 10 points to allocate three projects: P1, P2, and P3.
+    </p>
+
+    <p style="text-align: center">
+       Total P1-Profit =  Your P1-points × Other’s P1-points
+    </p>
+    <p style="text-align: center">
+        Your share of P1-Profit =  Your P2-points / (Your P2-points + Other's P2-points)
+    </p>
+    <p style="text-align: center">
+        Your earnings from P3 = Your P3-points
+    </p>
+
+    <p>
+        Your total earnings is determined by the following formula:
+    </p>
+    <p style="text-align: center">
+        Total P1-Profit × Your share of P1-Profit + Your P3-Earnings
+    </p>
+
+    <p>
+        In the complete form:
+    </p>
+    <p style="text-align: center">
+        Your P1-points × Other’s P1-points × Your P2-points / (Your P2-points + Other's P2-points) + Your P3-points
+    </p>
+        {% endif %}
+
+
+
+    {% if player.symmetric == 0 %}
+        {% if player.id_in_group == 1 %}
+    <p>
+        In each round, <strong> you have 10 points </strong> to allocate three projects: P1, P2, and P3.
+    </p>
+    <p>
+        In each round, <strong> the other participant has 20 points </strong>  to allocate three projects: P1, P2, and P3.
+    </p>
+    {% endif %}
+     {% if player.id_in_group == 2 %}
+    <p>
+        In each round, <strong> you have 20 points </strong> to allocate three projects: P1, P2, and P3.
+    </p>
+    <p>
+        In each round, <strong> the other participant has 10 points </strong>  to allocate three projects: P1, P2, and P3.
+    </p>
+
+     {% endif %}
+
+    <p style="text-align: center">
+       Total P1-Profit =  Your P1-points × Other’s P1-points
+    </p>
+    <p style="text-align: center">
+        Your share of P1-Profit =  Your P2-points / (Your P2-points + Other's P2-points)
+    </p>
+    <p style="text-align: center">
+        Your earnings from P3 = Your P3-points
+    </p>
+
+    <p>
+        Your total earnings is determined by the following formula:
+    </p>
+    <p style="text-align: center">
+        Total P1-Profit × Your share of P1-Profit + Your P3-Earnings
+    </p>
+
+    <p>
+        In the complete form:
+    </p>
+    <p style="text-align: center">
+        Your P1-points × Other’s P1-points × Your P2-points / (Your P2-points + Other's P2-points) + Your P3-points
+    </p>
+       {% endif %}
+</div>
+

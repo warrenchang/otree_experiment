@@ -53,8 +53,8 @@ class Group(BaseGroup):
         p1.other_place = p2.place
         p2.other_place = p1.place
 
-        p1.correct_time = p1.time == p2.other_time
-        p1.correct_place = p1.place == p2.other_place
+        p1.correct_time = p1.time == p1.other_time
+        p1.correct_place = p1.place == p1.other_place
         p1.payoff = (p1.correct_time and p1.correct_place)*Constants.bonus / self.session.config['real_world_currency_per_point']
         p2.payoff = p1.payoff
         p2.correct_place = p1.correct_place

@@ -13,7 +13,7 @@
         <th style="text-align:center">His/Her matched participant'action</th>
     </tr>
     {% for p in other_player.in_previous_rounds %}
-        {% if p.interaction_number = other_player.interaction_number %}
+        {% if p.interaction_number == other_player.interaction_number %}
     <tr>
         <td>{{ p.round_in_interaction}}</td>
         <td>{{ p.action}}</td>

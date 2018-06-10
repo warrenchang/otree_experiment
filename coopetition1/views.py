@@ -19,7 +19,7 @@ class BasePage(Page):
 
 class BaseWaitPage(WaitPage):
     def vars_for_template(self):
-        v =  {
+        v = {
             'other_player': self.player.get_partner(),
         }
         v.update(self.extra_vars_for_template())
@@ -45,22 +45,35 @@ class Decision(BasePage):
     form_fields = ['a1','a2','a3']
 
     def error_message(self, values):
-        if values["a1"] + values["a2"] > 10:
-            return 'The sum of the numbers cannot be greater than 10.'
+        ## depending on the role of the player, determine the the constraints on the endowment.
+        if (self.player.symmetric == 1) | (self.player.id_in_group==1):
+            if values["a1"] + values["a2"] > 10:
+                return 'The sum of the numbers cannot be greater than 10.'
 
-        if abs(values["a1"] + values["a2"] + values["a3"] - 10)>0.01:
-            a3_value = 10 - values["a1"] - values["a2"]
-            return 'The numbers must add up to 10. In order to add up to 10, you need to allocate %.2f to P3'%a3_value
+            if abs(values["a1"] + values["a2"] + values["a3"] - 10)>0.01:
+                a3_value = 10 - values["a1"] - values["a2"]
+                return 'The numbers must add up to 10. In order to add up to 10, you need to allocate %.2f to P3'%a3_value
+        else:
+            if values["a1"] + values["a2"] > 20:
+                return 'The sum of the numbers cannot be greater than 20.'
+
+            if abs(values["a1"] + values["a2"] + values["a3"] - 20)>0.01:
+                a3_value = 20 - values["a1"] - values["a2"]
+                return 'The numbers must add up to 20. In order to add up to 20, you need to allocate %.2f to P3'%a3_value
+
 
     def before_next_page(self):
         if self.timeout_happened:
             self.player.a1 = round(random.random()*5,2)
             self.player.a2 = round(random.random()*5,2)
-            self.player.a3 = round(10 - self.player.a1 - self.player.a2,2)
+            if (self.player.symmetric == 1) | (self.player.id_in_group == 1):
+                self.player.a3 = round(10 - self.player.a1 - self.player.a2,2)
+            else:
+                self.player.a3 = round(20 - self.player.a1 - self.player.a2,2)
 
 
 class DecisionWaitPage(BaseWaitPage):
-    template_name = 'coopetition/DecisionWaitPage.html'
+    template_name = 'coopetition1/DecisionWaitPage.html'
 
     def after_all_players_arrive(self):
         # it only gets executed once
@@ -83,11 +96,11 @@ class Results(BasePage):
 
 # class ResultsWaitPage(BaseWaitPage):
 class ResultsWaitPage(WaitPage):
-    template_name = 'coopetition/ResultsWaitPage.html'
+    template_name = 'coopetition1/ResultsWaitPage.html'
     wait_for_all_groups = True
 
     def is_displayed(self):
-        return self.player.treatment == 'reputation'
+        return self.player.matching == 'reputation'
 
 
 
@@ -106,7 +119,7 @@ class InteractionResults(BasePage):
 
 
 class InteractionWaitPage(BaseWaitPage):
-    template_name = 'coopetition/InteractionWaitPage.html'
+    template_name = 'coopetition1/InteractionWaitPage.html'
     wait_for_all_groups = True
 
     def is_displayed(self):

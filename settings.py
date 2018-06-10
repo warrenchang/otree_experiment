@@ -160,30 +160,23 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-        {
+    {
         'name': 'in_class',
         'display_name': "In class experiment",
         'num_demo_participants': 4,
         'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
-        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
-                         'repeated_game_randpay','ravens', 'payment_simple'
+        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition1',
+                         'repeated_game_randpay','simple_survey','payment_simple'
                          ],
     },
     {
-        'name': 'just_test',
-        'display_name': "just test",
+        'name': 'in_class2',
+        'display_name': "In class experiment second half",
         'num_demo_participants': 4,
-        'treatment': 'ASYM',
-        'belief_round': 1,
-        # 'debug': False,
-        'real_world_currency_per_point': 1 / 400,
-        'SP_money_per_point': 1,
-        'participation_fee': 30,
-        'app_sequence': ['social_preference_elicitation', 'asymmetric_PD', 'survey_asym_PD', 'big5_questionnaire',
-                         'payment_info_asym_PD'],
-        'parts_before_PD': 1,
-        # 'app_sequence': ['social_preference_elicitation','asymmetric_PD'],
+        'real_world_currency_per_point': 1/8,
+        'participation_fee': 0,
+        'app_sequence': [ 'repeated_game_randpay','simple_survey','payment_simple' ],
     },
     {
         'name': 'AsymPD_ASYM_belief1',

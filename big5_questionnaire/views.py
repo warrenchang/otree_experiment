@@ -7,12 +7,12 @@ import random
 class StartPage(Page):
     pass
 
-# class Page0(Page):
-#     form_model = models.Player
-#     form_fields = ['gender']
-#     def before_next_page(self):
-#         if self.timeout_happened:
-#             self.player.gender = random.choice(['male','female'])
+class Page0(Page):
+    form_model = models.Player
+    form_fields = ['gender']
+    def before_next_page(self):
+        if self.timeout_happened:
+            self.player.gender = random.choice(['male','female'])
 
 class Questions(Page):
     form_model = models.Player
@@ -60,16 +60,10 @@ class OCEAN(Page):
             self.player.OCEAN9 = random.choice(range(1,8))
             self.player.OCEAN10 = random.choice(range(1,8))
 
-
-
-
-
-
-
 page_sequence = [
     # StartPage,
-    # Page0,
-    Questions,
-    CFC,
-    OCEAN,
+    Page0,
+    # Questions,
+    # CFC,
+    # OCEAN,
 ]

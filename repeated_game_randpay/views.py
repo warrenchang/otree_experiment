@@ -25,7 +25,7 @@ class BasePage(Page):
 
 class BaseWaitPage(WaitPage):
     def vars_for_template(self):
-        return {
+        v = {
             # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
             'num_rounds': Constants.interaction_length[0],
@@ -34,6 +34,8 @@ class BaseWaitPage(WaitPage):
             'p21': Constants.payoff_matrix[str(self.player.interaction_number)]['Y']['X'],
             'p22': Constants.payoff_matrix[str(self.player.interaction_number)]['Y']['Y'],
         }
+        v.update(self.extra_vars_for_template())
+        return v
 
     def extra_vars_for_template(self):
         return {}

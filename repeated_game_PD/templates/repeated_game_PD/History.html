@@ -14,7 +14,7 @@
         <th style="text-align:center">Your cumulative earnings</th>
     </tr>
     {% for p in player.in_previous_rounds %}
-        {% if p.interaction_number = player.interaction_number %}
+        {% if p.interaction_number == player.interaction_number %}
     <tr>
         <td>{{ p.round_in_interaction}}</td>
         <td>{{ p.action}}</td>

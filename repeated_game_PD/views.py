@@ -21,12 +21,16 @@ class BasePage(Page):
 
 class BaseWaitPage(WaitPage):
     def vars_for_template(self):
-        return {
+        v = {
             # 'treatment': self.session.config['treatment'],
             'other_player': self.player.get_partner(),
             'num_rounds': Constants.interaction_length[0],
         }
+        v.update(self.extra_vars_for_template())
+        return v
 
+    def extra_vars_for_template(self):
+        return {}
 
 class Introduction(BasePage):
     # timeout_seconds = 30
@@ -73,7 +77,6 @@ class ResultsWaitPage(WaitPage):
 
     def is_displayed(self):
         return self.player.treatment == 'reputation'
-
 
 
 class InteractionResults(BasePage):
