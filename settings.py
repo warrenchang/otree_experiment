@@ -166,6 +166,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
+        'debug': False,
         'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition1',
                          'repeated_game_randpay','simple_survey','payment_simple'
                          ],
@@ -176,6 +177,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
+        'debug': False,
         'app_sequence': [ 'repeated_game_randpay','simple_survey','payment_simple' ],
     },
     {
