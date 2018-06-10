@@ -160,6 +160,16 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
+        {
+        'name': 'in_class',
+        'display_name': "In class experiment",
+        'num_demo_participants': 4,
+        'real_world_currency_per_point': 1/8,
+        'participation_fee': 0,
+        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
+                         'repeated_game_randpay','ravens', 'payment_simple'
+                         ],
+    },
     {
         'name': 'just_test',
         'display_name': "just test",
@@ -267,16 +277,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['big5_questionnaire'
                          ],
     },
-    {
-        'name': 'in_class',
-        'display_name': "In class experiment",
-        'num_demo_participants': 4,
-        'real_world_currency_per_point': 1/8,
-        'participation_fee': 0,
-        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
-                         'repeated_game_randpay','ravens', 'payment_simple'
-                         ],
-    },
+
     {
         'name': 'in_class_test',
         'display_name': "In class experiment test",
