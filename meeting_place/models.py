@@ -53,9 +53,9 @@ class Group(BaseGroup):
         p1.other_place = p2.place
         p2.other_place = p1.place
 
-        p1.payoff = (p1.time == p2.other_time and
-                               len(lcs(p1.place, p2.place,'beijing'))>=7
-                               )*Constants.bonus / self.session.config['real_world_currency_per_point']
+        correct_time = p1.time == p2.other_time
+        correct_place = p1.time == len(lcs(p1.place, p2.place,'beijing'))>=6
+        p1.payoff = (correct_time and correct_place)*Constants.bonus / self.session.config['real_world_currency_per_point']
         p2.payoff = p1.payoff
 
 
@@ -64,6 +64,8 @@ class Player(BasePlayer):
     place = models.CharField()
     other_time = models.CharField()
     other_place = models.CharField()
+    correct_time= models.BooleanField()
+    correct_place= models.BooleanField()
 
     def get_partner(self):
         return self.get_others_in_group()[0]

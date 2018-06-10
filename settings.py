@@ -67,8 +67,8 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 # REAL_WORLD_CURRENCY_CODE = 'USD'
-REAL_WORLD_CURRENCY_CODE = 'RMB '
 REAL_WORLD_CURRENCY_CODE = 'AED '
+REAL_WORLD_CURRENCY_CODE = 'RMB '
 USE_POINTS = True
 # POINTS_CUSTOM_NAME = 'tokens'
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 1
@@ -274,7 +274,7 @@ SESSION_CONFIGS = [
         'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
         'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
-                         'repeated_game_randpay','ravens', 'big5_questionnaire', 'payment_simple'
+                         'repeated_game_randpay','ravens', 'payment_simple'
                          ],
     },
     {
