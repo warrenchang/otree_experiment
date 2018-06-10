@@ -53,10 +53,12 @@ class Group(BaseGroup):
         p1.other_place = p2.place
         p2.other_place = p1.place
 
-        correct_time = p1.time == p2.other_time
-        correct_place = p1.time == len(lcs(p1.place, p2.place,'beijing'))>=6
-        p1.payoff = (correct_time and correct_place)*Constants.bonus / self.session.config['real_world_currency_per_point']
+        p1.correct_time = p1.time == p2.other_time
+        p1.correct_place = p1.place == p2.other_place
+        p1.payoff = (p1.correct_time and p1.correct_place)*Constants.bonus / self.session.config['real_world_currency_per_point']
         p2.payoff = p1.payoff
+        p2.correct_place = p1.correct_place
+        p2.correct_time = p1.correct_time
 
 
 class Player(BasePlayer):
