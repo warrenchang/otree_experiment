@@ -16,7 +16,7 @@ See https://en.wikipedia.org/wiki/Guess_2/3_of_the_average
 
 class Constants(BaseConstants):
     players_per_group = None
-    num_rounds = 2
+    num_rounds = 3
     p = 2/3 # the value of p in p-beauty context
     name_in_url = 'guess_number'
 
