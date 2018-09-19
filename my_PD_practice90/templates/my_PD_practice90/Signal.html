@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Practice interaction: send your message
@@ -24,7 +24,7 @@
 
 
     <div class="form-group required" style="text-align:center">
-        {% formfield player.message with label='Please send a message to the other person about the signal you received:' %}
+        {% formfield player.message label='Please send a message to the other person about the signal you received:' %}
         <div style="text-align:right">
             {% next_button %}
         </div>

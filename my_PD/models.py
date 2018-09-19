@@ -64,7 +64,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def before_session_starts(self):
+    def creating_session(self):
         # this is run before the start of every round
 
         current_round_in_interaction = Constants.round_in_interactions[self.round_number-1]
@@ -156,27 +156,27 @@ class Player(BasePlayer):
     interaction_number = models.PositiveIntegerField()
     round_in_interaction = models.PositiveIntegerField()
 
-    action = models.CharField(
+    action = models.StringField(
         choices=['A', 'B'],
         doc="""This player's action""",
         widget=widgets.RadioSelect()
     )
 
-    signal = models.CharField(
+    signal = models.StringField(
         choices=['A', 'B'],
         doc="""This player's signal received""",
         widget=widgets.RadioSelect()
     )
 
-    message = models.CharField(
+    message = models.StringField(
         choices=['a', 'b'],
         doc="""This player's message""",
         widget=widgets.RadioSelect()
     )
     partner_id = models.PositiveIntegerField()
-    other_action = models.CharField(choices=['A','B'])
-    other_signal = models.CharField(choices=['a','b'])
-    other_message = models.CharField(choices=['a','b'])
+    other_action = models.StringField(choices=['A','B'])
+    other_signal = models.StringField(choices=['a','b'])
+    other_message = models.StringField(choices=['a','b'])
 
     cum_payoff = models.CurrencyField()
 

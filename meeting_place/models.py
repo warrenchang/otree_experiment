@@ -38,7 +38,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def before_session_starts(self):
+    def creating_session(self):
         # this is run before the start of every round
         self.group_randomly()
 
@@ -62,10 +62,10 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    time = models.CharField()
-    place = models.CharField()
-    other_time = models.CharField()
-    other_place = models.CharField()
+    time = models.StringField()
+    place = models.StringField()
+    other_time = models.StringField()
+    other_place = models.StringField()
     correct_time= models.BooleanField()
     correct_place= models.BooleanField()
 

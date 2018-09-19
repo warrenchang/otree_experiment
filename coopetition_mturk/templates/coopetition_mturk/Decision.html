@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+Make your choice
+{% endblock %}
+
+{% block content %}
+<p style="font-size:16px">Round {{ player.round_in_interaction }} </p>
+
+{% include Constants.instructions_template %}
+
+
+<p style="font-size:16px">
+Please indicate the number of points you want to allocate to each of the following projects:
+</p>
+
+<div class="container" style="alignment:center">
+    <div class="row">
+        <div class="col-sm-4">
+            <b>Investment Account (x1)</b>  {{ form.a1 }}
+        </div>
+        <div class="col-sm-4">
+            <b>Rationing Account (y1) </b>  {{ form.a2 }}
+        </div>
+        <div class="col-sm-4">
+            <b>Kept to yourself </b>  {{ form.a3 }}
+        </div>
+    </div>
+</div>
+
+
+<p></p>
+
+<div style="text-align:right">
+    {% next_button %}
+</div>
+
+<br/><br/>
+
+{% include Constants.history_template %}
+
+{% endblock %}
+

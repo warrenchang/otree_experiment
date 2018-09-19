@@ -49,13 +49,13 @@ class Player(BasePlayer):
     bomb = models.IntegerField()
 
     # location of bomb with row/col info
-    bomb_location = models.TextField()
+    bomb_location = models.LongStringField()
 
     # number of collected boxes
     boxes_collected = models.IntegerField()
 
     # set/scheme of collected boxes
-    boxes_scheme = models.TextField()
+    boxes_scheme = models.LongStringField()
 
 
     # --- set round results and player's payoff

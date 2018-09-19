@@ -152,12 +152,12 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    action1 = models.CharField(
+    action1 = models.StringField(
         choices=['U', 'M' ,'D'],
         doc="""Row layer's action""",
         widget=widgets.RadioSelect()
     )
-    action2 = models.CharField(
+    action2 = models.StringField(
         choices= ['L', 'M' ,'R'],
         doc="""Column player's action""",
         widget=widgets.RadioSelectHorizontal()
@@ -203,9 +203,9 @@ class Player(BasePlayer):
     my_id = models.PositiveIntegerField()
     interaction_number = models.IntegerField()
     round_in_interaction = models.PositiveIntegerField()
-    treatment = models.CharField()
-    action = models.CharField()
-    other_action = models.CharField()
+    treatment = models.StringField()
+    action = models.StringField()
+    other_action = models.StringField()
     belief1 = models.IntegerField()
     belief2 = models.IntegerField()
     belief3 = models.IntegerField()

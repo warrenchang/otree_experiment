@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Make your choice
@@ -28,8 +28,8 @@ Represent your time in the format of four digits. For example, 9:30 p.m. is repr
 Try to avoid typos in your spelling of the place. Do not use any punctuations marks.
         </p>
 
-        {% formfield player.time with label='Please indicate the time:' %}
-        {% formfield player.place with label='Please indicate the place:' %}
+        {% formfield player.time label='Please indicate the time:' %}
+        {% formfield player.place label='Please indicate the place:' %}
 
     <hr/>
 

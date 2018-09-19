@@ -272,17 +272,6 @@ SESSION_CONFIGS = [
         'app_sequence': ['big5_questionnaire'
                          ],
     },
-
-    {
-        'name': 'in_class_test',
-        'display_name': "In class experiment test",
-        'num_demo_participants': 10,
-        'real_world_currency_per_point': 1/8,
-        'participation_fee': 0,
-        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition',
-                         'repeated_game_randpay','ravens', 'payment_simple'
-                         ],
-    },
     {
         'name': 'beauty_contest',
         'display_name': "Beauty contest",
@@ -318,7 +307,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'treatment': 'random',
         'num_rounds': 10,
-        'app_sequence': ['coopetition'],
+        'app_sequence': ['coopetition_mturk'],
     },
     {
         'name': "coordination_games",

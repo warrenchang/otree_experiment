@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
 Make your choice
@@ -16,7 +16,7 @@ Make your choice
 {% endif %}
 
 <div class="form-group required" style="text-align:center">
-    {% formfield player.action with label='Please make a choice:' %}
+    {% formfield player.action label='Please make a choice:' %}
 </div>
 
 

@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
 {% endblock %}
@@ -9,7 +9,7 @@
 
     <hr>
 
-    {% formfield player.gender with label="Your gender" %}
+    {% formfield player.gender label="Your gender" %}
 
     <hr/>
 

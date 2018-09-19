@@ -21,7 +21,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
 
-    def before_session_starts(self):
+    def creating_session(self):
         for p in self.get_players():
             p.payoff = 0
 
@@ -41,7 +41,7 @@ class Player(BasePlayer):
     participation_fee  = models.CurrencyField()
     role_SP = models.IntegerField()
     decision_SP = models.IntegerField()
-    paying_game = models.CharField()
+    paying_game = models.StringField()
     decision_number = models.IntegerField()
     UG_MAO = models.IntegerField()
     UG_offer = models.IntegerField()

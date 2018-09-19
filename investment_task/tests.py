@@ -1,5 +1,5 @@
 from otree.api import Currency as c, currency_range
-from . import views
+from . import pages
 from ._builtin import Bot
 from .models import Constants
 import random
@@ -8,5 +8,5 @@ import random
 class PlayerBot(Bot):
 
     def play_round(self):
-        yield (views.Investment, {'amount_invested': random.randint(0,21)})
-        yield (views.Results)
+        yield (pages.Investment, {'amount_invested': random.randint(0,21)})
+        yield (pages.Results)

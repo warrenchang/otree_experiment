@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block app_styles %}
 <style>
@@ -21,7 +21,7 @@
 </p>
 
 <div class="form-group required" >
-    {% formfield player.UG_MAO with label=""%}
+    {% formfield player.UG_MAO label=""%}
 </div>
 
 

@@ -1,5 +1,5 @@
 from otree.api import Currency as c, currency_range
-from . import views
+from . import pages
 from ._builtin import Bot
 from .models import Constants
 import random
@@ -8,8 +8,8 @@ import random
 class PlayerBot(Bot):
     def play_round(self):
         num_participants = len(self.subsession.get_players())
-        yield(views.Waiting)
-        yield (views.ModifiedUG,
+        yield(pages.Waiting)
+        yield (pages.ModifiedUG,
                {
                    "UGchoice0": random.choice([False, True]),
                    "UGchoice1": random.choice([False, True]),
@@ -33,8 +33,8 @@ class PlayerBot(Bot):
                    "UGchoice19": random.choice([False, True]),
                    "UGchoice20": random.choice([False, True]),
                })
-        yield(views.Waiting)
-        yield (views.ModifiedDG,
+        yield(pages.Waiting)
+        yield (pages.ModifiedDG,
                {
                    "DGchoice0": random.choice([False, True]),
                    "DGchoice1": random.choice([False, True]),
@@ -58,15 +58,15 @@ class PlayerBot(Bot):
                    "DGchoice19": random.choice([False, True]),
                    "DGchoice20": random.choice([False, True]),
                })
-        yield(views.Waiting)
+        yield(pages.Waiting)
         UG_offer = random.choice(range(0,21))
-        yield (views.UltimatumOffer,
+        yield (pages.UltimatumOffer,
                {
                    "UG_offer": UG_offer,
                    "UG_kept": 20 - UG_offer,
 
                })
-        yield (views.UltimatumMAO,
+        yield (pages.UltimatumMAO,
                {
                    "UG_MAO": random.choice(range(0,21)),
                })

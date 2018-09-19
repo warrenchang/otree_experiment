@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Make your choice
@@ -24,7 +24,7 @@
 {% endif %}
 
 
-        {% formfield player.choice with label='Please make a choice:' %}
+        {% formfield player.choice label='Please make a choice:' %}
 
     <hr/>
 

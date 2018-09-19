@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Make your choice
@@ -59,11 +59,11 @@
     </div>
 
 
-        {% formfield player.action with label='Please make a choice:' %}
+        {% formfield player.action label='Please make a choice:' %}
 
     <hr/>
     <p>Excluding you, there are {{ num_other_players }} other participants.</p>
-        {% formfield player.guess with label='Among these participants, how many do you think will choose X?' %}
+        {% formfield player.guess label='Among these participants, how many do you think will choose X?' %}
 
     <div style="text-align:right">
         {% next_button %}

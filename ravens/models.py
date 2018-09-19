@@ -23,7 +23,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def before_session_starts(self):
+    def creating_session(self):
         # this is run before the start of every round
         if self.round_number == 1:
             for p in self.get_players():

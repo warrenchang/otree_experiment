@@ -1,5 +1,5 @@
 from otree.api import Currency as c, currency_range
-from . import views
+from . import pages
 from ._builtin import Bot
 from .models import Constants
 import random
@@ -8,13 +8,13 @@ import random
 class PlayerBot(Bot):
     def play_round(self):
         if self.subsession.round_number == 1 and (not self.session.config['debug']):
-            yield(views.Introduction)
-        yield (views.Decision, {"action": random.choice(['A','B'])})
+            yield(pages.Introduction)
+        yield (pages.Decision, {"action": random.choice(['A','B'])})
         if self.session.config['treatment'] == 'COM':
-            yield (views.Signal, {"message": random.choice(['a','b'])})
-        yield (views.Results)
+            yield (pages.Signal, {"message": random.choice(['a','b'])})
+        yield (pages.Results)
         if Constants.number_sequence[self.subsession.round_number-1] > 6:
-            yield (views.InteractionResults)
+            yield (pages.InteractionResults)
         else:
-            yield (views.Continuation)
+            yield (pages.Continuation)
 

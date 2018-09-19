@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Part IV Investment Task
@@ -10,7 +10,7 @@
     {% include Constants.instructions_template %}
 
     {#    <div class="form-group required">#}
-    {% formfield player.amount_invested with label='Please make your investment decision:' %}
+    {% formfield player.amount_invested label='Please make your investment decision:' %}
 
 
     <p > Please carefully make your investment decision. After you have made your decision,

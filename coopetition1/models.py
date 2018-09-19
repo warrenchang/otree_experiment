@@ -79,7 +79,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
 
-    def before_session_starts(self):
+    def creating_session(self):
         # this is run before the start of every round
         round_in_interaction = Constants.round_in_interactions[self.round_number-1]
         interaction_number = Constants.interactions[self.round_number-1]
@@ -165,7 +165,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     my_id = models.PositiveIntegerField()
-    matching = models.CharField()
+    matching = models.StringField()
     symmetric = models.PositiveIntegerField()
     interaction_number = models.PositiveIntegerField()
     round_in_interaction = models.PositiveIntegerField()

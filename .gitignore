@@ -8,3 +8,5 @@ _static_root/
 *~
 *.sqlite3
 _coverage_results/
+
+__temp*

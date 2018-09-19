@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
 Make your choice
@@ -16,7 +16,7 @@ Make your choice
 
 
 <div class="form-group required" style="text-align:center">
-    {% formfield group.action2 with label='You are player B. Please make make your decision:' %}
+    {% formfield group.action2 label='You are player B. Please make make your decision:' %}
 </div>
 
 <div style="text-align:right">

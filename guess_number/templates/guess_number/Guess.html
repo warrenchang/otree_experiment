@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Your Guess
@@ -28,7 +28,7 @@
         </p>
     {% endif %}
 
-    {% formfield player.guess with label="Please pick an integer from 0 to 100:" %}
+    {% formfield player.guess label="Please pick an integer from 0 to 100:" %}
     {% next_button %}
 
 

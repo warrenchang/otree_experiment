@@ -106,7 +106,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    paying_game = models.CharField()
+    paying_game = models.StringField()
     decision_number = models.IntegerField()
     decision = models.BooleanField()
 

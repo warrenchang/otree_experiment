@@ -1,5 +1,5 @@
 from otree.api import Currency as c, currency_range
-from . import views
+from . import pages
 from ._builtin import Bot
 from .models import Constants
 import random
@@ -7,7 +7,7 @@ import random
 
 class PlayerBot(Bot):
     def play_round(self):
-        yield (views.Questions, {
+        yield (pages.Questions, {
             "Q1": random.choice(range(1, 8)),
             "Q2": random.choice(range(1, 8)),
             "Q3": random.choice(range(1, 8)),
@@ -18,7 +18,7 @@ class PlayerBot(Bot):
             "Q8": random.choice(range(1, 8)),
         })
 
-        yield (views.CFC,{
+        yield (pages.CFC,{
             "CFC1": random.choice(range(1, 8)),
             "CFC2": random.choice(range(1, 8)),
             "CFC3": random.choice(range(1, 8)),
@@ -26,7 +26,7 @@ class PlayerBot(Bot):
             "CFC5": random.choice(range(1, 8)),
         })
 
-        yield (views.OCEAN, {
+        yield (pages.OCEAN, {
             "OCEAN1": random.choice(range(1, 8)),
             "OCEAN2": random.choice(range(1, 8)),
             "OCEAN3": random.choice(range(1, 8)),

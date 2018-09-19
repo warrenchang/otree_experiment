@@ -19,7 +19,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def before_session_starts(self):
+    def creating_session(self):
         # this is run before the start of every round
         self.group_randomly()
 
