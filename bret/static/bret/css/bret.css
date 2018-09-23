@@ -20,7 +20,6 @@
 
 /** ROWS */
 #bomb-task .row{
-	display: table;
 	margin: 0 auto;
 }
 
@@ -191,24 +190,24 @@
 }
 
 /** icon (usd) */
-#bomb-task .holder .card .back .glyphicon-usd{
+#bomb-task .holder .card .back .fa-dollar-sign{
 	color: #346934;
 	background: rgba(52, 105, 52, 0.15);
 	display: table-cell;
 }
 
-#bomb-task .holder.bomb .card .back .glyphicon-usd{
+#bomb-task .holder.bomb .card .back .fa-dollar-sign{
 	display: none;
 }
 
 /** icon (fire) */
-#bomb-task .holder .card .back .glyphicon-fire{
+#bomb-task .holder .card .back .fa-bomb{
 	color: #692b28;
 	background: rgba(105, 43, 40, 0.15);
 	display: none;
 }
 
-#bomb-task .holder.bomb .card .back .glyphicon-fire{
+#bomb-task .holder.bomb .card .back .fa-bomb{
 	display: table-cell;
 }
 

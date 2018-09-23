@@ -7,21 +7,10 @@
 
 {% block content %}
 
-<p style="text-align:center;font-size:16px">
-            This is the end of the experiment. Please wait to be paid. </p>
-
-        <p style="text-align:center;font-size:16px">
-            {% if participation_fee != 0 %}
-             Your participation fee is {{ participation_fee }}
-            {% endif %}
-        </p>
-
-<p style="text-align:center;font-size:18px">
-        <strong>
-            Your total payoff is {{ final_payment }}
-        </strong>
-        </p>
-
+<p>This is the end of the experiment. Thank you for your participation.</p>
+<p>Your flat payment fee is {{participation_fee}}.</p>
+<p>You total earnings in the experiment is {{experiment_payoff}}, which is {{payment}}.</p>
+<p><strong> You final payment of the experiment is  {{final_payment}}.</strong> </p>
 
 {% endblock %}
 

@@ -8,6 +8,31 @@
 
 {% block content %}
 
+
+<style>
+    #width50 {
+        width: 50%;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 8px;
+        font-size: 10pt;
+    }
+    th {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 5px;
+        font-size: 10pt;
+    }
+    tr:nth-child(even){background-color: #f2f2f2;}
+    tr:hover {background-color: #ddd;}
+
+    table {
+        margin: auto;
+    }
+</style>
     <div style="text-align:center;font-size:16px">
         <p>
             <strong>
@@ -17,13 +42,7 @@
 
         <p>
             <strong>
-               The round that is selected for payment is Round {{ paying_round }}.
-            </strong>
-        </p>
-
-        <p>
-            <strong>
-        Your earnings for this part is {{ player.cum_payoff }}.
+        Your current total earnings is {{ player.cum_payoff }}.
             </strong>
         </p>
 
@@ -32,6 +51,7 @@
     <hr>
 
 {% include Constants.historyall_template %}
+{% include Constants.historyall_previous_template %}
 
 
 {% endblock %}

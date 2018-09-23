@@ -3,6 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
+import math
 
 author = 'Huanren Zhang'
 
@@ -18,51 +19,41 @@ def get_share(p1,p2):
 
 class Constants(BaseConstants):
     name_in_url = 'coopetition'
-    instructions_template = 'coopetition/Instructions.html'
-    history_template = 'coopetition/History.html'
-    historyall_template = 'coopetition/HistoryAllRounds.html'
-    otherhistory_template = 'coopetition/OtherHistory.html'
-
-    # number of rounds in each interaction randomly selected for payments
-    # set to non-positive number if all rounds are chosen for payments
-    num_paying_rounds = 1
+    instructions_template = 'coopetition_mturk/Summary_template.html'
+    breakdowns_template = 'coopetition_mturk/Breakdowns_template.html'
+    history_template = 'coopetition_mturk//History.html'
+    historyall_template = 'coopetition_mturk//HistoryAllRounds.html'
+    history_previous_template = 'coopetition_mturk//History_previous.html'
+    historyall_previous_template = 'coopetition_mturk//HistoryAllRounds_previous.html'
+    otherhistory_template = 'coopetition_mturk//OtherHistory.html'
 
     players_per_group = 2
 
-    interactions = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-        4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-    ]
-    round_in_interactions = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    ]
-
-    interaction_length = [10, 10, 10, 10]
-    treatments = ['random', 'random', 'fixed', 'fixed']
-    compete = [0, 1, 0, 1]
 
     # interactions = [
-    #     1, 1, 1,
-    #     2, 2, 2,
-    #     3, 3, 3,
-    #     4, 4, 4,
+    #     1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    #     2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
     # ]
     # round_in_interactions = [
-    #     1, 2, 3,
-    #     1, 2, 3,
-    #     1, 2, 3,
-    #     1, 2, 3,
+    #     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    #     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     # ]
-    #
-    # interaction_length = [3, 3, 3, 3]
+    # interaction_length = [10, 10]
+    interaction_length = [10, 10]
+    A_values = [0,60]
+
+    interactions = [
+        1, 1, 1,
+        2, 2, 2,
+    ]
+    round_in_interactions = [
+        1, 2, 3,
+        1, 2, 3,
+    ]
+
+    interaction_length = [3, 3]
 
     num_rounds = sum(interaction_length) # change num_rounds for testing purpose, but need to make sure that number_sequence
-
 
 
 class Subsession(BaseSubsession):
@@ -71,36 +62,21 @@ class Subsession(BaseSubsession):
         # this is run before the start of every round
         round_in_interaction = Constants.round_in_interactions[self.round_number-1]
         interaction_number = Constants.interactions[self.round_number-1]
-        treatment = Constants.treatments[interaction_number-1]
-        compete = Constants.compete[interaction_number-1]
-
-        # print((interaction_number,round_in_interaction,treatment))
-
-        # setting random paying rounds
-        if Constants.num_paying_rounds > 0:
-            if round_in_interaction == 1:
-                self.session.vars['paying_rounds'] = random.sample(
-                    range(1,Constants.interaction_length[interaction_number-1]+1),
-                                              Constants.num_paying_rounds)
+        # set the treatment variable
+        treatment = self.session.config['treatment']
 
         for p in self.get_players(): # set interaction number and round number
             p.interaction_number = interaction_number
             p.round_in_interaction = round_in_interaction
             p.treatment = treatment
-            p.compete = compete
-            p.paying_round = 1
-            # print((p.participant.id_in_session, p.interaction_number, p.round_in_interaction, p.treatment))
-            if Constants.num_paying_rounds > 0 and not (round_in_interaction in self.session.vars['paying_rounds']):
-                p.paying_round = 0
+            p.condition = p.treatment[:3]
+            ## a random number between 1 and 200 (inclusive)
+            p.rand_num = int(math.ceil(random.random()*200))
 
-        if round_in_interaction == 1: # at the start of each interaction, reshuffle group
-            self.group_randomly()
-        elif treatment != 'fixed':
-            self.group_randomly()
-        else:  # otherwise, group structure is the same as in the previous round
-            self.group_like_round(self.round_number-1)
-
-        print('Session paying round',self.session.vars['paying_rounds'] )
+            if p.treatment[3] == '0':
+                p.A = Constants.A_values[p.interaction_number-1]
+            else:
+                p.A = Constants.A_values[2-p.interaction_number]
 
 
 class Group(BaseGroup):
@@ -110,6 +86,7 @@ class Group(BaseGroup):
         p2.my_id = p2.participant.id_in_session
         p1.partner_id = p2.my_id
         p2.partner_id = p1.my_id
+        p2.rand_num = p1.rand_num
 
         # first calculate payoff
         p1.other_a1 = p2.a1
@@ -119,25 +96,51 @@ class Group(BaseGroup):
         p2.other_a2 = p1.a2
         p2.other_a3 = p1.a3
 
-        p1.pie = p1.a1*p2.a1
-        p2.pie = p1.a1*p2.a1
+        if p1.condition =='Det':
+            p1.pie = p1.a1*p2.a1 + p1.A
+            p2.pie = p1.a1*p2.a1 + p2.A
+        elif p1.condition =='Fix':
+            p1.successful =  p1.rand_num <= 100
+            p2.successful =  p1.successful
+            if p1.successful: # investment is a success
+                p1.pie = 2*p1.a1*p2.a1 + p1.A
+                p2.pie = p1.pie
+            else:
+                p1.pie = p1.A
+                p2.pie = p1.pie
+        elif p1.condition =='Var':
+            p1.successful = p1.rand_num <= p1.a1*p2.a1
+            p2.successful = p1.successful
+            if p1.successful: # investment is a success
+                p1.pie = 200 + p1.A
+                p2.pie = p1.pie
+            else:
+                p1.pie = p1.A
+                p2.pie = p1.pie
+
         p1.pie_share = round(get_share(p1.a2,p2.a2),2)
         p2.pie_share = round(get_share(p2.a2,p1.a2),2)
-
         p1.potential_payoff = p1.pie*p1.pie_share + p1.a3
         p2.potential_payoff = p2.pie*p2.pie_share + p2.a3
-
-        p1.other_payoff = p2.potential_payoff
-        p2.other_payoff = p1.potential_payoff
-
-        if p1.paying_round == 1:
+        if p1.timed_out:
+            p1.payoff = 0
+        else:
             p1.payoff = p1.potential_payoff
+        if p2.timed_out:
+            p2.payoff = 0
+        else:
             p2.payoff = p2.potential_payoff
 
         p1.cum_payoff = sum([p.payoff for p in p1.in_all_rounds()
                                       if p.interaction_number == p1.interaction_number])
         p2.cum_payoff = sum([p.payoff for p in p2.in_all_rounds()
                              if p.interaction_number == p1.interaction_number])
+
+        p1.other_payoff = p2.potential_payoff
+        p2.other_payoff = p1.potential_payoff
+        p1.other_share = p2.pie_share
+        p2.other_share = p1.pie_share
+
         # print((self.round_number,p1.payoff,p2.payoff))
 
         # update payoff for Part I in terms of real currency
@@ -150,25 +153,30 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     my_id = models.PositiveIntegerField()
     treatment = models.StringField()
-    compete = models.PositiveIntegerField()
+    condition = models.StringField()
+    A = models.IntegerField()
     interaction_number = models.PositiveIntegerField()
     round_in_interaction = models.PositiveIntegerField()
-    paying_round = models.PositiveIntegerField()
 
-    a1 = models.FloatField(min=0, max=10)
-    a2 = models.FloatField(min=0, max=10)
-    a3 = models.FloatField(min=0, max=10)
-    pie = models.FloatField()
+    a1 = models.IntegerField(min=0, max=10)
+    a2 = models.IntegerField(min=0, max=10)
+    a3 = models.IntegerField(min=0, max=10)
+    pie = models.IntegerField()
     pie_share = models.FloatField(min=0, max=1)
-    P3_earnings = models.FloatField()
+    ## here we use potential_payoff to record the payoff, the real payoff will be set to 0 if a time_out happened.
     potential_payoff = models.CurrencyField()
+    timed_out = models.BooleanField()
     cum_payoff = models.CurrencyField()
 
     partner_id = models.PositiveIntegerField()
-    other_a1 = models.FloatField(min=0, max=10)
-    other_a2 = models.FloatField(min=0, max=10)
-    other_a3 = models.FloatField(min=0, max=10)
+    other_a1 = models.IntegerField(min=0, max=10)
+    other_a2 = models.IntegerField(min=0, max=10)
+    other_a3 = models.IntegerField(min=0, max=10)
+    other_share = models.FloatField(min=0, max=1)
     other_payoff = models.CurrencyField()
+    other_cum_payoff = models.CurrencyField()
+    rand_num = models.PositiveIntegerField(max=200)
+    successful = models.BooleanField()
 
     def get_partner(self):
         return self.get_others_in_group()[0]

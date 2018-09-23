@@ -38,39 +38,39 @@ class Decision(Page):
     form_fields = [
         'bomb',
         'boxes_collected',
-        'boxes_scheme',
-        'bomb_location',
+        'bomb_row',
+        'bomb_col',
     ]
 
-    # set payoffs and globals
-    def before_next_page(self):
-        self.session.vars['reset'] = True
-        self.player.set_payoff()
-
-        if self.subsession.round_number == Constants.num_rounds:
-            self.player.set_globals()
-
-    # jsonify BRET settings for Javascript application
+    # BRET settings for Javascript application
     def vars_for_template(self):
-        reset = self.session.vars.get('reset',False)
-        if reset == True:
-           del self.session.vars['reset']
+        reset = self.participant.vars.get('reset',False)
+        if reset:
+            del self.participant.vars['reset']
 
         input = not Constants.devils_game if not Constants.dynamic else False
 
-        return {
-            'reset':         safe_json(reset),
-            'input':         safe_json(input),
-            'random':        safe_json(Constants.random),
-            'dynamic':       safe_json(Constants.dynamic),
-            'num_rows':      safe_json(Constants.num_rows),
-            'num_cols':      safe_json(Constants.num_cols),
-            'feedback':      safe_json(Constants.feedback),
-            'undoable':      safe_json(Constants.undoable),
-            'box_width':     safe_json(Constants.box_width),
-            'box_height':    safe_json(Constants.box_height),
-            'time_interval': safe_json(Constants.time_interval),
+        otree_vars = {
+            'reset':            reset,
+            'input':            input,
+            'random':           Constants.random,
+            'dynamic':          Constants.dynamic,
+            'num_rows':         Constants.num_rows,
+            'num_cols':         Constants.num_cols,
+            'feedback':         Constants.feedback,
+            'undoable':         Constants.undoable,
+            'box_width':        Constants.box_width,
+            'box_height':       Constants.box_height,
+            'time_interval':    Constants.time_interval,
         }
+
+        return {
+            'otree_vars':       otree_vars
+        }
+
+    def before_next_page(self):
+        self.participant.vars['reset'] = True
+        self.player.set_payoff()
 
 
 # ******************************************************************************************************************** #
@@ -84,13 +84,8 @@ class Results(Page):
 
     # variables for use in template
     def vars_for_template(self):
-
-        bomb_row = self.player.bomb_location.split(',')[0]
-        bomb_row = bomb_row.replace('{"row":','')
-
-        bomb_col = self.player.bomb_location.split(',')[1]
-        bomb_col = bomb_col.replace('"col":','')
-        bomb_col = bomb_col.replace('}','')
+        total_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
+        self.participant.vars['bret_payoff'] = total_payoff
 
         return {
             'player_in_all_rounds':   self.player.in_all_rounds(),
@@ -98,12 +93,12 @@ class Results(Page):
             'boxes_total':            Constants.num_rows * Constants.num_cols,
             'boxes_collected':        self.player.boxes_collected,
             'bomb':                   self.player.bomb,
-            'bomb_row':               bomb_row,
-            'bomb_col':               bomb_col,
+            'bomb_row':               self.player.bomb_row,
+            'bomb_col':               self.player.bomb_col,
             'round_result':           self.player.round_result,
-            'round_to_pay':           self.session.vars['round_to_pay'],
+            'round_to_pay':           self.participant.vars['round_to_pay'],
             'payoff':                 self.player.payoff,
-            'total_payoff':           sum([p.payoff for p in self.player.in_all_rounds()]),
+            'total_payoff':           total_payoff,
         }
 
 
@@ -112,8 +107,8 @@ class Results(Page):
 # ******************************************************************************************************************** #
 page_sequence = [Decision]
 
-if Constants.instructions == True:
+if Constants.instructions:
     page_sequence.insert(0,Instructions)
 
-if Constants.results == True:
+if Constants.results:
     page_sequence.append(Results)

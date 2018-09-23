@@ -28,12 +28,10 @@ services:
 
   otree:
     # if using Docker Hub, leave "build: ./" commented out.
-    # if you want to build an image locally, uncomment it
-    build: ./
+    # if you want to build an image locally, uncomment it.
 
-    # if using Docker Hub, change the line with image: to use your Docker Hub user-name/repository-name
-    # if you want to build an image locally, comment it
-#    image: otree:latest
+    build: ./
+    image: otree:latest
     environment:
       DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database/${POSTGRES_DATABASE}"
       OTREE_ADMIN_PASSWORD: ${OTREE_ADMIN_PASSWORD}
@@ -44,7 +42,11 @@ services:
     volumes:
       - "otree-resetdb:/opt/init"
     # Uncomment for live editing
-    #  - ./:/opt/otree
+    #   - ./:/opt/otree
+    # command:
+    #   - "otree"
+    #   - "runserver"
+    #   - "0.0.0.0:80"
     restart: always
     logging:
       options:

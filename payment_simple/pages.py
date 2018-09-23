@@ -11,8 +11,10 @@ class PaymentInfo(Page):
         participant = self.participant
         print(self.participant.vars)
         return {
+            'participation_fee': self.session.config['participation_fee'],
+            'experiment_payoff': self.participant.payoff,
+            'payment': self.participant.payoff_plus_participation_fee() - self.session.config['participation_fee'],
             'final_payment': self.participant.payoff_plus_participation_fee(),
-            'participation_fee': self.session.config['participation_fee']
         }
 
 

@@ -3,26 +3,46 @@
 {% block title %} {% endblock %}
 
 {% block content %}
-{#    {{ body_text }}#}
+
+<style>
+    #width50 {
+        width: 50%;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 8px;
+        font-size: 10pt;
+    }
+    th {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 5px;
+        font-size: 10pt;
+    }
+    tr:nth-child(even){background-color: #f2f2f2;}
+    tr:hover {background-color: #ddd;}
+
+    table {
+        margin: auto;
+    }
+</style>
 
 <p style="font-size:16px">Round {{ player.round_in_interaction }} </p>
 
-
-{% include Constants.instructions_template %}
-
-
-<h5 style="text-align:center">
+<p style="text-align:center; font-size:18px">
 You have made the following allocation:
-</h5>
+</p>
 <table class="table" style="text-align:center">
     <tr>
-        <td>P1: {{ player.a1 }}</td>
+        <td>Investment Account (\(x_1\)): {{ player.a1 }}</td>
     </tr>
     <tr>
-        <td>P2: {{ player.a2 }}</td>
+        <td>Rationing Account  (\(y_1\)): {{ player.a2 }}</td>
     </tr>
     <tr>
-        <td>P3: {{ player.a3 }}</td>
+        <td>Kept to oneself: {{ player.a3 }}</td>
     </tr>
 </table>
 
@@ -32,8 +52,16 @@ You have made the following allocation:
     </p>
 </div>
 
-<br/><br/>
-
+<br/>
 {% include Constants.history_template %}
 
+<br/>
+<div class="card bg-light instructions">
+    <div class="card-body">
+        {% include Constants.instructions_template %}
+    </div>
+</div>
+
+<br/>
+{% include Constants.history_previous_template %}
 {% endblock %}

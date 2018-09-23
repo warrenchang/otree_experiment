@@ -1,11 +1,17 @@
 import settings
+from distutils.version import StrictVersion
 
 from django import forms
+from django.utils.translation import ugettext as _
 
+import otree
 from otree.api import Page, WaitPage
 
 APPS_DEBUG = getattr(settings, 'APPS_DEBUG', False)
 DEBUG_FOR_TPL = str(APPS_DEBUG).lower()
+
+otree_base_version = 1 if StrictVersion(otree.__version__) < StrictVersion('2.0') else 2
+extended_page_tpl = 'otreeutils/ExtendedPage%d.html' % otree_base_version
 
 
 class AllGroupsWaitPage(WaitPage):
@@ -16,6 +22,9 @@ class AllGroupsWaitPage(WaitPage):
 class ExtendedPage(Page):
     """Base page class with extended functionality."""
     page_title = ''
+    extra_template = ''
+    quiz_info = ''
+    timer_warning_text = None
     timeout_warning_seconds = None    # set this to enable a timeout warning -- no form submission, just a warning
     timeout_warning_message = 'Please hurry up, the time is over!'
 
@@ -23,18 +32,38 @@ class ExtendedPage(Page):
     def has_timeout_warning(cls):
         return cls.timeout_warning_seconds is not None and cls.timeout_warning_seconds > 0
 
+    def get_template_names(self):
+        if self.__class__ is ExtendedPage:
+            return [extended_page_tpl]
+        else:
+            return super().get_template_names()
+
     def get_page_title(self):
         """Override this method for a dynamic page title"""
         return self.page_title
 
+    def get_extra_template(self):
+        """Override this method for a dynamic page title"""
+        return self.extra_template
+
+    def get_quiz_info(self):
+        """Override this method for a dynamic page title"""
+        return self.quiz_info
+
     def get_context_data(self, **kwargs):
         ctx = super(ExtendedPage, self).get_context_data(**kwargs)
-
+        default_timer_warning_text = getattr(self, 'timer_text', _("Time left to complete this page:"))
         ctx.update({
             'page_title': self.get_page_title(),
+            'extra_template': self.get_extra_template(),
+            'quiz_info': self.get_quiz_info(),
+            'timer_warning_text': self.timer_warning_text or default_timer_warning_text,
             'timeout_warning_seconds': self.timeout_warning_seconds,
             'timeout_warning_message': self.timeout_warning_message,
             'debug': DEBUG_FOR_TPL,   # allows to retrieve a debug state in the templates
+            'otree_base_version': otree_base_version,
+            'extended_page_tpl': extended_page_tpl,
+            'use_legacy_timer_code': StrictVersion(otree.__version__) < StrictVersion('1.4'),
         })
 
         return ctx

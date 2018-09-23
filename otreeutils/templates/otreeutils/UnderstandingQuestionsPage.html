@@ -1,5 +1,6 @@
-{% extends "otreeutils/ExtendedPage.html" %}
-{% load staticfiles otree %}
+{% extends extended_page_tpl %}
+
+{% load staticfiles otree_tags %}
 
 {% block app_styles %}
 <link href="{% static 'otreeutils/understanding.css' %}" rel="stylesheet" type="text/css">
@@ -7,39 +8,32 @@
 
 {% block app_scripts %}
 <script src="{% static 'otreeutils/understanding.js' %}"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MathJax example</title>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async>
+    </script>
+</head>
 {% endblock %}
 
 
 {% block title %}
-    {{ page_title }}
+{{ page_title }}
 {% endblock %}
 
 {% block content %}
-<div class="instructions well well-lg">
-    <p>
-        Please answer the following questions that aim to test your understanding of the experiment.
-    </p>
-    <p>
-        After you are finished all the questions, you can click "check my answers" button at the bottom to check whether
-        your answers are correct. You will not be able to proceed until you correctly answer all questions.
-    </p>
-    <p>
-        <strong>
-            If you answer all questions correctly at the first time, you will receive a bonus of AED 10.<br/>
-            For each "wrong attempt", that is, each clicking of "check my answers" button with some wrong answers,
-            AED 2 would be deducted from the bonus.
-        </strong>
-    </p>
-    <p>
-        For example, if you have 2 wrong attempts, you will receive AED 6.
-        If you have more than 5 wrong attempts, you will not receive any bonus.
-    </p>
 
-
-    <p>If you have already have two wrong attempts and do not understand why your question is wrong,
-        you can ask the experimenter for help. </p>
+<div class="card bg-light instructions">
+    <div class="card-body">
+        {% if quiz_info != '' %}
+        {% include quiz_info  %}
+        {% endif %}
+    </div>
 </div>
 
+<br/>
 <ul class="questions">
     {{ questions_form.as_ul }}
 </ul>
@@ -53,10 +47,19 @@
            onclick="checkUnderstandingQuestionsForm()">
 </div>
 
+<br/>
+<div class="card bg-light instructions">
+    <div class="card-body">
+        {% if extra_template != '' %}
+        {% include extra_template  %}
+        {% endif %}
+    </div>
+</div>
+
 <script>
-$(function() {
-    setupUnderstandingQuestionsForm({{ n_questions }}, "{{ hint_empty }}", "{{ form_field_n_wrong_attempts }}", {{ set_correct_answers }});
-});
+    $(function() {
+        setupUnderstandingQuestionsForm({{ n_questions }}, "{{ hint_empty }}", "{{ form_field_n_wrong_attempts }}", {{ set_correct_answers }});
+    });
 </script>
 {% endblock %}
 
