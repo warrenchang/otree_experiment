@@ -79,7 +79,9 @@ POINTS_DECIMAL_PLACES = 1
 LANGUAGE_CODE = 'en'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['otree','otreeutils']
+INSTALLED_APPS = ['otree',
+                  'otreeutils',
+                  'otree-tools',]
 
 
 # SENTRY_DSN = ''
@@ -227,17 +229,28 @@ SESSION_CONFIGS = [
         'app_sequence': ['coopetition_quiz', 'coopetition_mturk', 'survey_online', 'risk_preferences', 'payment_online'
                          ],
     },
-    # {
-    #     'name': 'in_class',
-    #     'display_name': "In class experiment",
-    #     'num_demo_participants': 6,
-    #     'real_world_currency_per_point': 1/8,
-    #     'participation_fee': 0,
-    #     'debug': False,
-    #     'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition1',
-    #                      'repeated_game_randpay','simple_survey','payment_simple'
-    #                      ],
-    # },
+    {
+        'name': 'in_class',
+        'display_name': "In class experiment",
+        'num_demo_participants': 6,
+        'real_world_currency_per_point': 1/8,
+        'participation_fee': 0,
+        'debug': False,
+        'app_sequence': ['pure_coordination','meeting_place','guess_number','repeated_game_PD','coopetition1',
+                         'repeated_game_randpay','simple_survey','payment_simple'
+                         ],
+    },
+    {
+        'name': 'in_class_again',
+        'display_name': "In class experiment again?",
+        'num_demo_participants': 6,
+        'real_world_currency_per_point': 1 / 8,
+        'participation_fee': 0,
+        'debug': False,
+        'app_sequence': ['pure_coordination', 'meeting_place', 'guess_number', 'repeated_game_PD', 'coopetition1',
+                         'repeated_game_randpay', 'simple_survey', 'payment_simple'
+                         ],
+    },
     # {
     #     'name': 'in_class2',
     #     'display_name': "In class experiment second half",

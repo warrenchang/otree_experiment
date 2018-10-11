@@ -28,10 +28,14 @@ services:
 
   otree:
     # if using Docker Hub, leave "build: ./" commented out.
-    # if you want to build an image locally, uncomment it.
-
+    # if you want to build an image locally, uncomment it
     build: ./
-    image: otree:latest
+
+    # if using Docker Hub, change the line with image: to use your Docker Hub user-name/repository-name
+    # if you want to build an image locally, comment it
+#    image: otree:latest
+
+
     environment:
       DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database/${POSTGRES_DATABASE}"
       OTREE_ADMIN_PASSWORD: ${OTREE_ADMIN_PASSWORD}
