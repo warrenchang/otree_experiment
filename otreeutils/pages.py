@@ -25,6 +25,8 @@ class AllGroupsWaitPage(WaitPage):
 class ExtendedPage(Page):
     """Base page class with extended functionality."""
     page_title = ''
+    extra_template = ''
+    quiz_info = ''
     timer_warning_text = None
     timeout_warning_seconds = None    # set this to enable a timeout warning -- no form submission, just a warning
     timeout_warning_message = 'Please hurry up, the time is over!'
@@ -42,6 +44,14 @@ class ExtendedPage(Page):
     def get_page_title(self):
         """Override this method for a dynamic page title"""
         return self.page_title
+
+    def get_extra_template(self):
+        """Override this method for a dynamic page title"""
+        return self.extra_template
+
+    def get_quiz_info(self):
+        """Override this method for a dynamic page title"""
+        return self.quiz_info
 
     def get_context_data(self, **kwargs):
         ctx = super(ExtendedPage, self).get_context_data(**kwargs)

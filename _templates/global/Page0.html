@@ -39,8 +39,22 @@
 
 {% block global_scripts  %}
 {% block styles %}
+    <style>
+        .otree-timer {
+            display: none;
+        }
+    </style>
 {% endblock %}
 
 {% block scripts %}
+    <script>
+        $(function () {
+            $('.otree-timer__time-left').on('update.countdown', function (event) {
+                if (event.offset.totalSeconds === 29) {
+                    $('.otree-timer').show();
+                }
+            });
+        });
+    </script>
 {% endblock %}
 {% endblock %}

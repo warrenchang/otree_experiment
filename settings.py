@@ -70,7 +70,7 @@ REAL_WORLD_CURRENCY_CODE = 'AED '
 REAL_WORLD_CURRENCY_CODE = 'RMB '
 REAL_WORLD_CURRENCY_CODE = '$'
 USE_POINTS = True
-# POINTS_CUSTOM_NAME = 'tokens'
+POINTS_CUSTOM_NAME = ''
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 1
 POINTS_DECIMAL_PLACES = 1
 
@@ -81,7 +81,7 @@ LANGUAGE_CODE = 'en'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree',
                   'otreeutils',
-                  'otree-tools',]
+                  'otree_tools',]
 
 
 # SENTRY_DSN = ''
@@ -241,17 +241,26 @@ SESSION_CONFIGS = [
                          ],
     },
     {
-        'name': 'in_class_again',
-        'display_name': "In class experiment again?",
+        'name': 'risk_preferences',
+        'display_name': "BRET",
         'num_demo_participants': 6,
         'real_world_currency_per_point': 1 / 8,
         'participation_fee': 0,
         'debug': False,
-        'app_sequence': ['pure_coordination', 'meeting_place', 'guess_number', 'repeated_game_PD', 'coopetition1',
-                         'repeated_game_randpay', 'simple_survey', 'payment_simple'
+        'app_sequence': ['bret',
                          ],
     },
-    # {
+    {
+        'name': 'exploration_exploitation',
+        'display_name': "exploration exploitation",
+        'num_demo_participants': 3,
+        'real_world_currency_per_point': 1 / 8,
+        'participation_fee': 0,
+        'debug': False,
+        'app_sequence': ["wildcat",
+                         ]
+    },
+                         # {
     #     'name': 'in_class2',
     #     'display_name': "In class experiment second half",
     #     'num_demo_participants': 6,
