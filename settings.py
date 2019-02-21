@@ -164,74 +164,28 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'coopetition_mturk_det0_60',
-        'display_name': "Coopetition Det0_60",
+        'name': 'behavioral_econ_experiment',
+        'display_name': "In-class experiment",
         'num_demo_participants': 4,
-        'real_world_currency_per_point': 1 / 500,
-        'participation_fee': 1,
-        'treatment' : 'Det0_60',
+        'real_world_currency_per_point': 1,
+        'participation_fee': 0,
         # 'debug': False,
-        'app_sequence': ['coopetition_quiz', 'coopetition_mturk', 'survey_online','risk_preferences', 'payment_online'
+        'app_sequence': ['questions'
                          ],
     },
-    {
-        'name': 'coopetition_mturk_det60_0',
-        'display_name': "Coopetition Det60_0",
-        'num_demo_participants': 4,
-        'real_world_currency_per_point': 1 / 500,
-        'participation_fee': 1,
-        'treatment': 'Det60_0',
-        # 'debug': False,
-        'app_sequence': ['coopetition_quiz', 'coopetition_mturk', 'survey_online','risk_preferences', 'payment_online'
-                         ],
-    },
-    {
-        'name': 'coopetition_mturk_fix0_60',
-        'display_name': "Coopetition Fix0_60",
-        'num_demo_participants': 4,
-        'real_world_currency_per_point': 1 / 500,
-        'participation_fee': 1,
-        'treatment': 'Fix0_60',
-        # 'debug': False,
-        'app_sequence': ['coopetition_quiz', 'coopetition_mturk', 'survey_online','risk_preferences', 'payment_online'
-                         ],
-    },
-    {
-        'name': 'coopetition_mturk_fix60_0',
-        'display_name': "Coopetition Fix60_0",
-        'num_demo_participants': 4,
-        'real_world_currency_per_point': 1 / 500,
-        'participation_fee': 1,
-        'treatment': 'Fix60_0',
-        # 'debug': False,
-        'app_sequence': ['coopetition_quiz', 'coopetition_mturk', 'survey_online','risk_preferences', 'payment_online'
-                         ],
-    },
-    {
-        'name': 'coopetition_mturk_var0_60',
-        'display_name': "Coopetition Var0_60",
-        'num_demo_participants': 4,
-        'real_world_currency_per_point': 1 / 500,
-        'participation_fee': 1,
-        'treatment': 'Var0_60',
-        # 'debug': False,
-        'app_sequence': ['coopetition_quiz', 'coopetition_mturk', 'survey_online','risk_preferences', 'payment_online'
-                         ],
-    },
-    {
-        'name': 'coopetition_mturk_var60_0',
-        'display_name': "Coopetition Var60_0",
-        'num_demo_participants': 4,
-        'real_world_currency_per_point': 1 / 500,
-        'participation_fee': 1,
-        'treatment': 'Var60_0',
-        # 'debug': False,
-        'app_sequence': ['coopetition_quiz', 'coopetition_mturk', 'survey_online', 'risk_preferences', 'payment_online'
+     {
+        'name': 'risk_preferences',
+        'display_name': "risk preferences",
+        'num_demo_participants': 6,
+        'real_world_currency_per_point': 1 / 8,
+        'participation_fee': 0,
+        'debug': False,
+        'app_sequence': ['bret', 'risk_preferences',
                          ],
     },
     {
         'name': 'in_class',
-        'display_name': "In class experiment",
+        'display_name': "In class experiment ",
         'num_demo_participants': 6,
         'real_world_currency_per_point': 1/8,
         'participation_fee': 0,
@@ -240,16 +194,7 @@ SESSION_CONFIGS = [
                          'repeated_game_randpay','simple_survey','payment_simple'
                          ],
     },
-    {
-        'name': 'risk_preferences',
-        'display_name': "BRET",
-        'num_demo_participants': 6,
-        'real_world_currency_per_point': 1 / 8,
-        'participation_fee': 0,
-        'debug': False,
-        'app_sequence': ['bret',
-                         ],
-    },
+
     {
         'name': 'exploration_exploitation',
         'display_name': "exploration exploitation",
